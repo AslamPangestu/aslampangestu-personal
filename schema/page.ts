@@ -1,7 +1,7 @@
 import { DocumentIcon } from '@sanity/icons'
-import { defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
-import seo from './seo';
+import seo from './seo'
 
 /**
  * Here you can see the different schema types that are available:
@@ -15,5 +15,12 @@ export default defineType({
   title: 'Page',
   icon: DocumentIcon,
   type: 'document',
-  fields: seo
+  fields: [
+    ...seo,
+    defineField({
+      name: 'jsonContent',
+      title: 'JSON Content',
+      type: 'text',
+    })
+  ]
 })

@@ -1,4 +1,4 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { ImageIcon, ProjectsIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 import seo from './seo'
@@ -14,7 +14,7 @@ export default defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
-  icon: DocumentIcon,
+  icon: ProjectsIcon,
   fields: [
     ...seo,
     defineField({

@@ -1,10 +1,19 @@
 ---
-import Layout from 'src/layouts/Layout.astro';
+import { sanityClient } from 'sanity:client'
+
+import Layout from 'src/layouts/Layout.astro'
+
+interface Metadata {
+  title: string
+  keyword: string
+  description: string
+}
+
+const seo: Metadata = await sanityClient.fetch(
+  `*[_type == "page" && title == 'Home'][0]`
+)
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		Hello World
-	</main>
+<Layout title='Home'>
+  <main>Home</main>
 </Layout>
-

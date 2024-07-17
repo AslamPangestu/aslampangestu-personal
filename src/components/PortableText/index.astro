@@ -1,0 +1,19 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext'
+
+import Code from './Code.astro'
+import Image from './Image.astro'
+import InternalLink from './InternalLink.astro'
+
+const components = {
+  type: {
+    image: Image,
+    code: Code
+  },
+  mark: {
+    internalLink: InternalLink
+  }
+}
+---
+
+<PortableTextInternal value={Astro.props.value} components={components} />

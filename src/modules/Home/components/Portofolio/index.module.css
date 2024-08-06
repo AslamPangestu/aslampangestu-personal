@@ -1,0 +1,95 @@
+@custom-media --sm-n-above (width >= 480px);
+@custom-media --md-n-above (width >= 768px);
+@custom-media --lg-n-above (width >= 1024px);
+
+.portofolioContainer {
+  padding: 10rem 0;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container > div {
+  flex: 1;
+}
+
+.titleContainer > div:last-child {
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.bodyContainer {
+  max-width: 100%;
+}
+
+.innerBodyContainer {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(1rem * -1);
+}
+
+.itemContainer {
+  flex: 0 0 80%;
+  min-width: 0;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+
+.itemContainer > div:first-child {
+  height: 300px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.itemContainer:hover > div:first-child > picture img {
+  transform: scale(1);
+}
+
+.itemContainer > div:first-child > picture {
+  display: flex;
+  height: 100%;
+}
+
+.itemContainer > div:first-child > picture img {
+  object-fit: cover;
+  transition:
+    transform 1s,
+    filter 2s ease-in-out;
+  transform: scale(1.1);
+}
+
+.itemContainer p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media (--sm-n-above) {
+  .itemContainer {
+    flex: 0 0 70%;
+  }
+}
+
+@media (--md-n-above) {
+  .itemContainer {
+    flex: 0 0 45%;
+  }
+}
+
+@media (--lg-n-above) {
+  .itemContainer {
+    flex: 0 0 30%;
+  }
+}

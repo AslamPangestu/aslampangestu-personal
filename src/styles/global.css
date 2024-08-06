@@ -1,0 +1,81 @@
+:root {
+  color-scheme: light;
+  --text: var(--gray-11);
+  --surface: var(--stone-2);
+  --primary: var(--red-6);
+
+  /* TODO: Adjust name */
+  --detail-high-contrast: rgb(192, 192, 192);
+  --detail-medium-contrast: rgb(234, 234, 234);
+  --text-high-contrast-rgb-value: 49, 49, 49;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --text: var(--gray-2);
+    --surface: var(--stone-11);
+    --primary: var(--red-6);
+
+    /* TODO: Adjust name */
+    --detail-high-contrast: rgb(101, 101, 101);
+    --detail-medium-contrast: rgb(25, 25, 25);
+    --text-high-contrast-rgb-value: 230, 230, 230;
+  }
+}
+
+[color-scheme='light'] {
+  color-scheme: light;
+  --text: var(--gray-11);
+  --surface: var(--stone-2);
+  --primary: var(--red-6);
+
+  /* TODO: Adjust name */
+  --detail-high-contrast: rgb(192, 192, 192);
+  --detail-medium-contrast: rgb(234, 234, 234);
+  --text-high-contrast-rgb-value: 49, 49, 49;
+}
+
+[color-scheme='dark'] {
+  color-scheme: dark;
+  --text: var(--gray-2);
+  --surface: var(--stone-11);
+  --primary: var(--red-6);
+
+  /* TODO: Adjust name */
+  --detail-high-contrast: rgb(101, 101, 101);
+  --detail-medium-contrast: rgb(25, 25, 25);
+  --text-high-contrast-rgb-value: 230, 230, 230;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text);
+  margin: 0;
+}
+
+code {
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+main{
+  margin: 0 0.5rem;
+}
+
+.container {
+  max-width: 1536px;
+  margin: auto;
+}

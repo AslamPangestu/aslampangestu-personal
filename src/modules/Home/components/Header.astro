@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+  name: string
+  role: string
+  description: string
+  image: string
+  contacts: Array<Contact>
+}
+
+const { description, image, name, role, contacts } = Astro.props
+---
+
+<section>
+  <div>
+    <h1>Hi! I Am <br /><span>{name}</span></h1>
+    <h2>{role}</h2>
+    <p>{description}</p>
+    <div class="contacts-container">
+      <span>Follow me on:</span>
+      <div>
+        {
+          contacts.map((item: Contact) => (
+            <a href={item.value}>
+              <i class={`ti ${item.icon}`} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class='image-container circular'>
+      <Image
+        src={image}
+        class='circular'
+        alt='Profile'
+        width={300}
+        height={300}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  @custom-media --md-n-above (width >= 768px);
+
+  section {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding: 10rem 0;
+    align-items: center;
+  }
+
+  @media (--md-n-above) {
+    section {
+      flex-direction: row;
+    }
+  }
+
+  section > div {
+    flex: 1;
+  }
+
+  section > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .image-container {
+    background-color: var(--primary);
+    width: 310px;
+    height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circular {
+    border-radius: 50%;
+  }
+
+  .contacts-container > span{
+    font-size: 1.125rem;
+  }
+
+  .contacts-container > div{
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contacts-container i{
+    font-size: 2rem;
+  }
+
+  span {
+    color: var(--primary);
+  }
+</style>

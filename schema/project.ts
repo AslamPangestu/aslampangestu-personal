@@ -1,8 +1,6 @@
 import { ImageIcon, ProjectsIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-import seo from './seo'
-
 /**
  * Here you can see the different schema types that are available:
 
@@ -16,16 +14,11 @@ export default defineType({
   type: 'document',
   icon: ProjectsIcon,
   fields: [
-    ...seo,
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-        isUnique: (value, context) => context.defaultIsUnique(value, context)
-      },
+      name: 'title',
+      description: 'This field is the title of your web page.',
+      title: 'Title',
+      type: 'string',
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -56,7 +49,7 @@ export default defineType({
     }),
     defineField({
       name: 'tags',
-      title: 'Tags',
+      title: 'Role',
       type: 'array',
       of: [{ type: 'string' }],
       options: {

@@ -80,7 +80,8 @@ export default defineType({
       name: 'date',
       title: 'Date',
       type: 'datetime',
-      initialValue: () => new Date().toISOString()
+      options: { dateFormat: 'YYYY-MM-DD', timeFormat: 'HH:mm:ss' },
+      initialValue: () => new Date().toISOString(),
     })
   ],
   preview: {

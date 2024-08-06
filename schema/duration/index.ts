@@ -11,12 +11,12 @@ export default defineField({
   },
   fields: [
     defineField({
-      type: 'datetime',
+      type: 'date',
       name: 'start',
       title: 'Start'
     }),
     defineField({
-      type: 'datetime',
+      type: 'date',
       name: 'end',
       title: 'End'
     })

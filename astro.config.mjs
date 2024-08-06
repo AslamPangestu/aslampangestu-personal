@@ -16,10 +16,10 @@ export default defineConfig({
   // TODO: URL
   site: 'https://stargazers.club',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({ imageService: true, devImageService: true }),
   image: {
-    domains: ["media.licdn.com"],
-    remotePatterns: [{ protocol: "https" }],
+    domains: ['media.licdn.com'],
+    remotePatterns: [{ protocol: 'https' }]
   },
   integrations: [
     sitemap(),

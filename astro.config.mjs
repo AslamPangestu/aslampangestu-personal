@@ -17,6 +17,10 @@ export default defineConfig({
   site: 'https://stargazers.club',
   output: 'server',
   adapter: vercel(),
+  image: {
+    domains: ["media.licdn.com"],
+    remotePatterns: [{ protocol: "https" }],
+  },
   integrations: [
     sitemap(),
     sanity({

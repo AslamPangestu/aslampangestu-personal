@@ -3,10 +3,12 @@ import { sanityClient } from "sanity:client";
 
 import Layout from 'src/layouts/Layout.astro';
 
-const seo = await sanityClient.fetch(`*[_type == "page" && title == 'Home'][0]`);
+const page: Page = await sanityClient.fetch(
+  `*[_type == "page" && title == 'Home'][0]`
+)
 ---
 
-<Layout title="Project">
+<Layout title={page.title} description={page.description} keyword={page.keyword}>
 	<main>
 		Project
 	</main>

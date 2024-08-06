@@ -16,7 +16,7 @@ interface Content {
   skills: Array<Skill>
 }
 
-const seo: Page = await sanityClient.fetch(
+const page: Page = await sanityClient.fetch(
   `*[_type == "page" && title == 'Home'][0]`
 )
 
@@ -53,10 +53,10 @@ const posts: Array<Post> = await sanityClient.fetch(
   } | order(_updatedAt asc)`
 )
 
-const content: Content = seo.jsonContent ? JSON.parse(seo.jsonContent) : null
+const content: Content = page.jsonContent ? JSON.parse(page.jsonContent) : null
 ---
 
-<Layout title={seo.title} description={seo.description} keyword={seo.keyword}>
+<Layout title={page.title} description={page.description} keyword={page.keyword}>
   <div class='container'>
     <HeaderSection
       name={content.name}

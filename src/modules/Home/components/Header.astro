@@ -22,7 +22,7 @@ const { description, image, name, role, contacts } = Astro.props
       <div>
         {
           contacts.map((item: Contact) => (
-            <a href={item.value}>
+            <a href={item.value} aria-label={`contact ${item.name}`}>
               <i class={`ti ${item.icon}`} />
             </a>
           ))

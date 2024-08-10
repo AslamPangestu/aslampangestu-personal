@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
       _onSetTheme(local)
       return
     }
-    
+
     const theme = window.matchMedia('(prefers-color-scheme: light)').matches
       ? 'light'
       : 'dark'
@@ -42,6 +42,7 @@ const ThemeSwitcher = () => {
           role='switch'
           name='theme'
           value='dark'
+          aria-label='theme-toggle'
           checked={value}
           readOnly
         />

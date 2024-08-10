@@ -66,6 +66,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
       className={styles.pageButton}
       type='button'
       data-testid='carousel-prev'
+      aria-label='carousel-prev'
       {...restProps}
     >
       <svg className={styles.pageButtonSvg} viewBox='0 0 532 532'>
@@ -87,6 +88,7 @@ export const NextButton: React.FC<PropType> = (props) => {
       className={styles.pageButton}
       type='button'
       data-testid='carousel-next'
+      aria-label='carousel-next'
       {...restProps}
     >
       <svg className={styles.pageButtonSvg} viewBox='0 0 532 532'>

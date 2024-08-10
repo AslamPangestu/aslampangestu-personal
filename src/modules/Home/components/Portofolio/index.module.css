@@ -3,7 +3,7 @@
 @custom-media --lg-n-above (width >= 1024px);
 
 .portofolioContainer {
-  padding: 10rem 0;
+  padding: 2.5rem 0;
 }
 
 .titleContainer {
@@ -83,6 +83,10 @@
 }
 
 @media (--md-n-above) {
+  .portofolioContainer {
+    padding: 10rem 0;
+  }
+
   .itemContainer {
     flex: 0 0 45%;
   }

@@ -84,32 +84,34 @@ const SkillsContainer = ({ data }: Props) => {
 
   return (
     <section className={styles.skillsContainer}>
-      <h3>My Experties</h3>
-      <div className={styles.iconsContainer}>
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+      <div className='container'>
+        <h3>My Experties</h3>
+        <div className={styles.iconsContainer}>
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
 
-        <div className={styles.bodyContainer}>
-          <Carousel
-            emblaRef={emblaRef}
-            containerClass={styles.innerBodyContainer}
-          >
-            {options.map((item: Option, index: number) => (
-              <div
-                key={item.name}
-                className={styles.itemContainer}
-                data-active={index === currentIndex}
-              >
-                <div>
-                  <i className={`ti ${item.icon}`}></i>
+          <div className={styles.bodyContainer}>
+            <Carousel
+              emblaRef={emblaRef}
+              containerClass={styles.innerBodyContainer}
+            >
+              {options.map((item: Option, index: number) => (
+                <div
+                  key={item.name}
+                  className={styles.itemContainer}
+                  data-active={index === currentIndex}
+                >
+                  <div>
+                    <i className={`ti ${item.icon}`}></i>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Carousel>
+              ))}
+            </Carousel>
+          </div>
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      </div>
-      <div>
-        <p>{currentData.description}</p>
+        <div>
+          <p>{currentData.description}</p>
+        </div>
       </div>
     </section>
   )

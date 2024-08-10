@@ -2,6 +2,7 @@
   color-scheme: light;
   --text: var(--gray-11);
   --surface: var(--stone-2);
+  --surface-2: var(--stone-3);
   --primary: var(--red-6);
 
   /* TODO: Adjust name */
@@ -15,6 +16,7 @@
     color-scheme: dark;
     --text: var(--gray-2);
     --surface: var(--stone-11);
+    --surface-2: var(--stone-10);
     --primary: var(--red-6);
 
     /* TODO: Adjust name */
@@ -28,6 +30,7 @@
   color-scheme: light;
   --text: var(--gray-11);
   --surface: var(--stone-2);
+  --surface-2: var(--stone-3);
   --primary: var(--red-6);
 
   /* TODO: Adjust name */
@@ -40,6 +43,7 @@
   color-scheme: dark;
   --text: var(--gray-2);
   --surface: var(--stone-11);
+  --surface-2: var(--stone-10);
   --primary: var(--red-6);
 
   /* TODO: Adjust name */
@@ -71,11 +75,19 @@ a {
   text-decoration: none;
 }
 
-main{
+/* main{
   margin: 0 0.5rem;
+} */
+
+/* TODO: Add margin */
+.container {
+  max-width: 1280px;
+  margin: auto;
+  /* margin: 0 0.5rem; */
 }
 
-.container {
-  max-width: 1536px;
-  margin: auto;
+@media only screen and (max-width: 1280px) {
+  .container {
+    margin: 0 0.5rem;
+  }
 }

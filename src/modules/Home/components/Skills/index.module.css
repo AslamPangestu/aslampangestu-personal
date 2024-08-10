@@ -1,11 +1,19 @@
+@custom-media --xs-n-above (width >= 360px);
 @custom-media --sm-n-above (width >= 480px);
 @custom-media --md-n-above (width >= 768px);
 
 .skillsContainer {
+  background-color: var(--surface-2);
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+}
+
+.skillsContainer > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10rem 0;
+  padding: 2.5rem 0;
   gap: 1rem;
 }
 
@@ -29,7 +37,7 @@
 }
 
 .itemContainer {
-  flex: 0 0 20%;
+  flex: 0 0 27%;
   min-width: 0;
   padding-left: 1rem;
   display: flex;
@@ -37,13 +45,13 @@
 }
 
 .itemContainer[data-active='true'] > div {
-  background-color: red;
+  background-color: var(--primary);
   transform: scale(1);
 }
 
 .itemContainer > div {
   border-radius: 50%;
-  border: 1px solid red;
+  border: 1px solid var(--primary);
   height: 64px;
   width: 64px;
   display: flex;
@@ -55,30 +63,44 @@
   transform: scale(0.75);
 }
 
-.itemContainer> div > i {
+.itemContainer > div > i {
   font-size: 2rem;
   transform: scale(0.75);
 }
 
-.itemContainer[data-active='true'] > div >i{
+.itemContainer[data-active='true'] > div > i {
   transform: scale(1.25);
 }
 
-.skillsContainer > div:last-child {
-  border: 1px solid red;
+.skillsContainer > div > div:last-child {
+  border: 1px solid var(--primary);
   padding: 0 1em;
   width: 80%;
   min-height: 150px;
   border-radius: 0.5rem;
 }
 
+@media (--xs-n-above) {
+  .itemContainer {
+    flex: 0 0 25%;
+  }
+}
+
 @media (--sm-n-above) {
-  .skillsContainer > div:last-child {
+  .skillsContainer > div > div:last-child {
     width: 300px;
   }
 }
 
 @media (--md-n-above) {
+  .itemContainer {
+    flex: 0 0 20%;
+  }
+
+  .skillsContainer > div {
+    padding: 10rem 0;
+  }
+
   .iconsContainer {
     max-width: 500px;
   }

@@ -25,6 +25,7 @@ const OPTIONS: EmblaOptionsType = {
   dragFree: true
 }
 
+// TODO: Full styling
 const PortofolioItem = ({ data, onClick }: ItemProps) => (
   <div className={styles.itemContainer} onClick={onClick}>
     <div>
@@ -53,7 +54,7 @@ const PortofolioContainer = ({ data = [] }: Props) => {
   const _onClick = () => { }
 
   return (
-    <section className={styles.portofolioContainer}>
+    <section className={`container ${styles.portofolioContainer}`}>
       <div className={styles.titleContainer}>
         <div></div>
         <h3> My Recent Work </h3>

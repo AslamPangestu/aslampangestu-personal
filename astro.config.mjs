@@ -13,8 +13,7 @@ const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: URL
-  site: 'https://stargazers.club',
+  site: 'https://aslampangestu.vercel.app/',
   output: 'server',
   adapter: vercel({ imageService: true, devImageService: true }),
   image: {

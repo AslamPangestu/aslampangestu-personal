@@ -2,16 +2,16 @@
 import '../styles/global.css'
 
 import Header from './Header'
-// import Header from './Header.astro'
 import Footer from './Footer.astro'
 
 interface Props {
   title: string
   keyword: string
   description: string
+  haveBlog: boolean
 }
 
-const { title, keyword, description } = Astro.props
+const { title, keyword, description, haveBlog } = Astro.props
 const currentPath = Astro.url.pathname
 ---
 
@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname
     />
   </head>
   <body>
-    <Header client:load currentPath={currentPath} />
+    <Header client:load currentPath={currentPath} haveBlog={haveBlog} />
     <main>
       <slot />
     </main>

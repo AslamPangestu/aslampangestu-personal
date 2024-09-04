@@ -17,7 +17,7 @@ interface Content {
 }
 
 const page: Page = await sanityClient.fetch(
-  `*[_type == "page" && title == 'Home'][0]`
+  `*[_type == "page" && title == 'Aslam Pangestu'][0]`
 )
 
 const contacts: Array<Contact> = await sanityClient.fetch(
@@ -56,7 +56,12 @@ const posts: Array<Post> = await sanityClient.fetch(
 const content: Content = page.jsonContent ? JSON.parse(page.jsonContent) : null
 ---
 
-<Layout title={page.title} description={page.description} keyword={page.keyword}>
+<Layout
+  title={page.title}
+  description={page.description}
+  keyword={page.keyword}
+  haveBlog={posts.length !== 0}
+>
   <div>
     <HeaderSection
       name={content.name}
@@ -68,6 +73,6 @@ const content: Content = page.jsonContent ? JSON.parse(page.jsonContent) : null
 
     <SkillsSection client:visible data={content.skills} />
     <PortofolioSection client:visible data={projects} />
-    <BlogSection data={posts} />
+    {posts.length > 3 && <BlogSection data={posts} />}
   </div>
 </Layout>

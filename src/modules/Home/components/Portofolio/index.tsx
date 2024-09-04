@@ -26,7 +26,7 @@ const OPTIONS: EmblaOptionsType = {
 }
 
 // TODO: Full styling
-const PortofolioItem = ({ data, onClick }: ItemProps) => (
+const PortfolioItem = ({ data, onClick }: ItemProps) => (
   <div className={styles.itemContainer} onClick={onClick}>
     <div>
       <PortableText
@@ -40,7 +40,7 @@ const PortofolioItem = ({ data, onClick }: ItemProps) => (
   </div>
 )
 
-const PortofolioContainer = ({ data = [] }: Props) => {
+const PortfolioContainer = ({ data = [] }: Props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
 
   const {
@@ -54,10 +54,10 @@ const PortofolioContainer = ({ data = [] }: Props) => {
   const _onClick = () => { }
 
   return (
-    <section className={`container ${styles.portofolioContainer}`}>
+    <section className={`container ${styles.portfolioContainer}`}>
       <div className={styles.titleContainer}>
         <div></div>
-        <h3> My Recent Work </h3>
+        <h3> My Recent Work</h3>
         <div>
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
@@ -70,9 +70,11 @@ const PortofolioContainer = ({ data = [] }: Props) => {
             containerClass={styles.innerBodyContainer}
           >
             {data.map((item: Project) => (
-              <PortofolioItem key={item.id} data={item} onClick={_onClick} />
+              <PortfolioItem key={item.id} data={item} onClick={_onClick} />
             ))}
-            <div className={styles.itemContainer}>View More</div>
+            <div className={styles.viewMoreContainer}>
+              <div>View More</div>
+            </div>
           </Carousel>
         </div>
       )}
@@ -80,4 +82,4 @@ const PortofolioContainer = ({ data = [] }: Props) => {
   )
 }
 
-export default PortofolioContainer
+export default PortfolioContainer

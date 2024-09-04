@@ -2,7 +2,7 @@
 @custom-media --md-n-above (width >= 768px);
 @custom-media --lg-n-above (width >= 1024px);
 
-.portofolioContainer {
+.portfolioContainer {
   padding: 2.5rem 0;
 }
 
@@ -35,7 +35,7 @@
   margin-left: calc(1rem * -1);
 }
 
-.itemContainer {
+.itemContainer, .viewMoreContainer {
   flex: 0 0 80%;
   min-width: 0;
   margin-left: 1rem;
@@ -43,6 +43,12 @@
   flex-direction: column;
   gap: 1.5rem;
   cursor: pointer;
+}
+
+.viewMoreContainer > div {
+  background-color: white;
+  height: 100%;
+  border-radius: 0.5rem;
 }
 
 .itemContainer > div:first-child {
@@ -68,6 +74,11 @@
   transform: scale(1.1);
 }
 
+.itemContainer span {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
 .itemContainer p {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,23 +88,23 @@
 }
 
 @media (--sm-n-above) {
-  .itemContainer {
+  .itemContainer, .viewMoreContainer {
     flex: 0 0 70%;
   }
 }
 
 @media (--md-n-above) {
-  .portofolioContainer {
+  .portfolioContainer {
     padding: 10rem 0;
   }
 
-  .itemContainer {
+  .itemContainer, .viewMoreContainer {
     flex: 0 0 45%;
   }
 }
 
 @media (--lg-n-above) {
-  .itemContainer {
+  .itemContainer, .viewMoreContainer {
     flex: 0 0 30%;
   }
 }

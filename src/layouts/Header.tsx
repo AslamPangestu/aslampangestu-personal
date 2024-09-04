@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import ThemeSwitcher from './components/ThemeSwitcher'
@@ -7,6 +7,7 @@ import styles from './index.module.css'
 
 interface Props {
   currentPath: string
+  haveBlog: boolean
 }
 
 interface Menu {
@@ -49,10 +50,17 @@ function enableScroll() {
   window.onscroll = function () {}
 }
 
-const HeaderLayout = ({ currentPath }: Props) => {
+const HeaderLayout = ({ currentPath, haveBlog }: Props) => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 640 })
 
   const [toggle, setToggle] = useState(false)
+
+  const menus: Array<Menu> = useMemo(() => {
+    if (haveBlog) {
+      return MENUS
+    }
+    return MENUS.filter(({ name }) => name !== 'Blog')
+  }, [haveBlog])
 
   const _onToggle = () =>
     setToggle((prevState) => {
@@ -70,7 +78,7 @@ const HeaderLayout = ({ currentPath }: Props) => {
         <div className={`container ${styles.innerContainer}`}>
           {/* TODO: Icon */}
           <nav>
-            <a href='/'>Brand Icon</a>
+            {/* <a href='/'>Brand Icon</a> */}
           </nav>
 
           {isTabletOrMobile ? (
@@ -87,7 +95,7 @@ const HeaderLayout = ({ currentPath }: Props) => {
             </div>
           ) : (
             <div className={styles.menuContainer}>
-              {MENUS.map((item) => (
+              {menus.map((item) => (
                 <a
                   href={item.path}
                   {...(currentPath === item.path

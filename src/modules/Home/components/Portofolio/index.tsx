@@ -30,7 +30,7 @@ const PortfolioItem = ({ data, onClick }: ItemProps) => (
   <div className={styles.itemContainer} onClick={onClick}>
     <div>
       <PortableText
-        value={{ ...data.coverImage, alt: `${data.title} Picture` }}
+        value={{ ...data.coverImage, alt: `${data.title} Portfolio` }}
       />
     </div>
     <div>
@@ -54,31 +54,34 @@ const PortfolioContainer = ({ data = [] }: Props) => {
   const _onClick = () => { }
 
   return (
-    <section className={`container ${styles.portfolioContainer}`}>
-      <div className={styles.titleContainer}>
-        <div></div>
-        <h3> My Recent Work</h3>
-        <div>
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+    <>
+      <section className={`container ${styles.portfolioContainer}`}>
+        <div className={styles.titleContainer}>
+          <div></div>
+          <h3> My Recent Work</h3>
+          <div>
+            <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+            <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+          </div>
         </div>
-      </div>
-      {data?.length && (
-        <div className={styles.bodyContainer}>
-          <Carousel
-            emblaRef={emblaRef}
-            containerClass={styles.innerBodyContainer}
-          >
-            {data.map((item: Project) => (
-              <PortfolioItem key={item.id} data={item} onClick={_onClick} />
-            ))}
-            <div className={styles.viewMoreContainer}>
-              <div>View More</div>
-            </div>
-          </Carousel>
-        </div>
-      )}
-    </section>
+        {data?.length && (
+          <div className={styles.bodyContainer}>
+            <Carousel
+              emblaRef={emblaRef}
+              containerClass={styles.innerBodyContainer}
+            >
+              {data.map((item: Project) => (
+                <PortfolioItem key={item.id} data={item} onClick={_onClick} />
+              ))}
+              <div className={styles.viewMoreContainer}>
+                <div>View More</div>
+              </div>
+            </Carousel>
+          </div>
+        )}
+      </section>
+      {/* TODO: Modal UI */}
+    </>
   )
 }
 

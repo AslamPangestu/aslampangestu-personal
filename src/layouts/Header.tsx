@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import ThemeSwitcher from './components/ThemeSwitcher'
@@ -7,7 +7,6 @@ import styles from './index.module.css'
 
 interface Props {
   currentPath: string
-  haveBlog: boolean
 }
 
 interface Menu {
@@ -20,10 +19,10 @@ const MENUS: Array<Menu> = [
     name: 'Home',
     path: '/'
   },
-  {
-    name: 'Blog',
-    path: '/blogs'
-  },
+  // {
+  //   name: 'Blog',
+  //   path: '/blogs'
+  // },
   {
     name: 'Project',
     path: '/projects'
@@ -50,17 +49,10 @@ function enableScroll() {
   window.onscroll = function () {}
 }
 
-const HeaderLayout = ({ currentPath, haveBlog }: Props) => {
+const HeaderLayout = ({ currentPath }: Props) => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 640 })
 
   const [toggle, setToggle] = useState(false)
-
-  const menus: Array<Menu> = useMemo(() => {
-    if (haveBlog) {
-      return MENUS
-    }
-    return MENUS.filter(({ name }) => name !== 'Blog')
-  }, [haveBlog])
 
   const _onToggle = () =>
     setToggle((prevState) => {
@@ -77,9 +69,7 @@ const HeaderLayout = ({ currentPath, haveBlog }: Props) => {
       <header className={styles.container}>
         <div className={`container ${styles.innerContainer}`}>
           {/* TODO: Icon */}
-          <nav>
-            {/* <a href='/'>Brand Icon</a> */}
-          </nav>
+          <nav>{/* <a href='/'>Brand Icon</a> */}</nav>
 
           {isTabletOrMobile ? (
             // https://uiverse.io/ArturCodeCraft/selfish-fish-82
@@ -95,7 +85,7 @@ const HeaderLayout = ({ currentPath, haveBlog }: Props) => {
             </div>
           ) : (
             <div className={styles.menuContainer}>
-              {menus.map((item) => (
+              {MENUS.map((item: Menu) => (
                 <a
                   href={item.path}
                   {...(currentPath === item.path

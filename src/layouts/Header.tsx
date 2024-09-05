@@ -52,7 +52,7 @@ function enableScroll() {
 const HeaderLayout = ({ currentPath }: Props) => {
   const isTabletOrMobile = useMediaQuery({ maxWidth: 640 })
 
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState<boolean>(false)
 
   const _onToggle = () =>
     setToggle((prevState) => {

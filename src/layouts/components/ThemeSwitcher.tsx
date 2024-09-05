@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import styles from './index.module.css'
 
 const ThemeSwitcher = () => {
-  const [value, setValue] = useState(false)
+  const [value, setValue] = useState<boolean>(false)
 
   const _onSetTheme = (value: string) => {
     const doc = document.firstElementChild

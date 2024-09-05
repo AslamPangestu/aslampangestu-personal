@@ -32,6 +32,7 @@ const projects: Array<Project> = await sanityClient.fetch(
     site,
     tags,
     projectDescription,
+    'roles': tags,
     'startDate': duration.start,
     'endDate': duration.end,
     coverImage

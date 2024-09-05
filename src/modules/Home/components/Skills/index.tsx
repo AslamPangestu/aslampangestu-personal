@@ -37,7 +37,7 @@ const SkillsContainer = ({ data }: Props) => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
 
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const currentData: Skill = useMemo(() => data[currentIndex], [currentIndex])
   const options: Array<Option> = useMemo(() => {

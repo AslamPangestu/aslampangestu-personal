@@ -5,17 +5,7 @@
     0 0 #0000,
     0 0 #0000,
     0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  max-width: 400px;
+  /* max-width: 400px; */
   outline: none;
   padding: 0;
 }
-
-.modalContainer > div {
-  padding: 1.5rem;
-}
-
-.modalContainer > div:first-child {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }

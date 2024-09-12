@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react'
 
 import styles from './index.module.css'
 
@@ -13,6 +13,10 @@ export interface ModalInterface<T> {
   open: boolean
   data: T
 }
+
+export type ModalRefType = {
+  onClose: () => void;
+};
 
 const isClickInsideRectangle = (
   e: React.MouseEvent<HTMLDialogElement, MouseEvent>,
@@ -31,43 +35,47 @@ const isClickInsideRectangle = (
   )
 }
 
-const ModalComponent = ({ open, children, onClose, title }: Props) => {
-  const ref = useRef<HTMLDialogElement>(null)
+const ModalComponent = forwardRef(
+  ({ open, children, onClose }: Props, ref) => {
+    const innerRef = useRef<HTMLDialogElement>(null)
 
-  useEffect(() => {
-    if (open) {
-      ref.current?.showModal()
+    useImperativeHandle(ref, () => {
+      return {
+        onClose() {
+          _onClose();
+        },
+      };
+    }, []);
+
+    useEffect(() => {
+      if (open) {
+        innerRef.current?.showModal()
+      }
+    }, [open])
+
+    const _onClose = () => {
+      innerRef.current?.close()
+      onClose()
     }
-  }, [open])
 
-  const _onClose = () => {
-    ref.current?.close()
-    onClose()
-  }
-
-  const _onClickDialog = (
-    event: React.MouseEvent<HTMLDialogElement, MouseEvent>
-  ) => {
-    if (!isClickInsideRectangle(event, ref.current)) {
-      _onClose()
+    const _onClickDialog = (
+      event: React.MouseEvent<HTMLDialogElement, MouseEvent>
+    ) => {
+      if (!isClickInsideRectangle(event, innerRef.current)) {
+        _onClose()
+      }
     }
-  }
 
-  return (
-    <dialog
-      ref={ref}
-      onClick={_onClickDialog}
-      className={styles.modalContainer}
-    >
-      <div>
-        <div>{title && <span>{title}</span>}</div>
-        <div>
-          <i className="ti ti-x"></i>
-        </div>
-      </div>
-      <div>{children}</div>
-    </dialog>
-  )
-}
+    return (
+      <dialog
+        ref={innerRef}
+        onClick={_onClickDialog}
+        className={styles.modalContainer}
+      >
+        {children}
+      </dialog>
+    )
+  }
+)
 
 export default ModalComponent

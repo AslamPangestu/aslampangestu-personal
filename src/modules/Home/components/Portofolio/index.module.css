@@ -1,6 +1,6 @@
-@custom-media --sm-n-above (width >= 480px);
-@custom-media --md-n-above (width >= 768px);
-@custom-media --lg-n-above (width >= 1024px);
+@custom-media --sm-n-above (width >=480px);
+@custom-media --md-n-above (width >=768px);
+@custom-media --lg-n-above (width >=1024px);
 
 .portfolioContainer {
   padding: 2.5rem 0;
@@ -35,7 +35,8 @@
   margin-left: calc(1rem * -1);
 }
 
-.itemContainer, .viewMoreContainer {
+.itemContainer,
+.viewMoreContainer {
   flex: 0 0 80%;
   min-width: 0;
   margin-left: 1rem;
@@ -88,7 +89,8 @@
 }
 
 @media (--sm-n-above) {
-  .itemContainer, .viewMoreContainer {
+  .itemContainer,
+  .viewMoreContainer {
     flex: 0 0 70%;
   }
 }
@@ -98,13 +100,56 @@
     padding: 10rem 0;
   }
 
-  .itemContainer, .viewMoreContainer {
+  .itemContainer,
+  .viewMoreContainer {
     flex: 0 0 45%;
   }
 }
 
 @media (--lg-n-above) {
-  .itemContainer, .viewMoreContainer {
+  .itemContainer,
+  .viewMoreContainer {
     flex: 0 0 30%;
   }
+}
+
+.modalContainer {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContainer > div:first-child {
+  position: absolute;
+  width: 100%;
+}
+
+.modalContainer > div:first-child > div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.modalContainer > div:first-child > div > i {
+  background-color: var(--surface);
+  color: var(--text);
+  border-radius: 50%;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.modalContainer > div:first-child > div > i:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.modalContainer > div:nth-child(3) {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContainer > div:nth-child(3) > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

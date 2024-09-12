@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import type { EmblaOptionsType } from 'embla-carousel'
+import dayjs from 'dayjs'
 
 import Carousel from 'src/components/Carousel'
 import Modal from 'src/components/Modal'
@@ -11,7 +12,7 @@ import {
 } from 'src/components/Carousel/Buttons'
 import PortableText from 'src/components/PortableTextReact'
 
-import type { ModalInterface } from 'src/components/Modal'
+import type { ModalInterface, ModalRefType } from 'src/components/Modal'
 
 import styles from './index.module.css'
 
@@ -45,6 +46,7 @@ const PortfolioItem = ({ data, onClick }: ItemProps) => (
 )
 
 const PortfolioContainer = ({ data = [] }: Props) => {
+  const modalRef = useRef<ModalRefType>(null)
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS)
   const [modal, setModal] = useState<ModalInterface<Project | null>>({
     open: false,
@@ -64,6 +66,9 @@ const PortfolioContainer = ({ data = [] }: Props) => {
 
   const _onClose = () => {
     setModal({ open: false, data: null })
+  }
+  const _onVisit = (link: string | undefined) => {
+    window.open(link, '_blank')
   }
 
   return (
@@ -99,23 +104,43 @@ const PortfolioContainer = ({ data = [] }: Props) => {
           </div>
         )}
       </section>
-      <Modal open={modal.open} onClose={_onClose}>
+      <Modal ref={modalRef} open={modal.open} onClose={_onClose}>
         {modal.data && (
-          <>
+          <div className={styles.modalContainer}>
+            <div>
+              <div>
+                <i
+                  className='ti ti-x'
+                  onClick={() => modalRef.current?.onClose()}
+                ></i>
+              </div>
+            </div>
             <PortableText
               value={{
                 ...modal.data.coverImage,
                 alt: `${modal.data.title} Portfolio`
               }}
             />
-            <span>{modal.data.client}</span>
-            <span>{modal.data.endDate}</span>
-            <PortableText value={modal.data.projectDescription} />
-            <span>{JSON.stringify(modal.data.roles)}</span>
-            <span>{modal.data.site}</span>
-            <span>{modal.data.startDate}</span>
-            <span>{modal.data.title}</span>
-          </>
+            <div>
+              <div>
+                <h5>
+                  {modal.data.title} (
+                  {dayjs(modal.data.startDate).format('MMMM YYYY')} -{' '}
+                  {dayjs(modal.data.endDate).format('MMMM YYYY')})
+                </h5>
+                {modal.data.site && (
+                  <button onClick={() => _onVisit(modal.data?.site)}>
+                    Open
+                  </button>
+                )}
+              </div>
+              <span>{modal.data.client}</span>
+              <span>
+                {modal.data.roles.map((role: string) => role).join(', ')}
+              </span>
+              <PortableText value={modal.data.projectDescription} />
+            </div>
+          </div>
         )}
       </Modal>
     </>

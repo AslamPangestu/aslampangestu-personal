@@ -1,0 +1,33 @@
+---
+import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+---
+
+<section class="container mx-auto w-full px-6 md:px-8 flex flex-col gap-8">
+  <div class="flex flex-col md:flex-row gap-5 justify-between items-center">
+    <h2
+      class="md:basis-1/2 font-black text-on-surface uppercase text-2xl md:text-4xl dark:text-white"
+    >
+      Highlighted Blogs
+    </h2>
+    <p
+      class="md:basis-1/2 text-on-surface-secondary max-w-5xl text-sm md:text-xl dark:text-white"
+    >
+      A selection of my latest and most popular blog posts, covering topics from
+      software architecture to productivity tips.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-5">
+    <BlogItem
+      title="Title 1"
+      description="Description 1"
+      image="Image 1"
+      href="https://google.com"
+    />
+    <BlogItem
+      title="Title 2"
+      description="Description 2"
+      image="Image 2"
+      href="https://google.com"
+    />
+  </div>
+</section>

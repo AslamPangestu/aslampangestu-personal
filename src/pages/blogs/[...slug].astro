@@ -1,0 +1,41 @@
+---
+import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+
+import MainLayout from "@/widgets/MainLayout/index.astro";
+import ClickToAction from "@/widgets/ClickToAction.astro";
+
+const { slug } = Astro.params;
+---
+
+<MainLayout>
+  <section class="container mx-auto w-full px-6 md:px-8 flex flex-col gap-8">
+    <a href="/blogs">Back to Blog</a>
+    <h1
+      class="font-black text-on-surface uppercase text-2xl md:text-4xl dark:text-white"
+    >
+      Title
+    </h1>
+    <div>Header Image</div>
+  </section>
+  <section
+    class="container mx-auto grid grid-cols-1 md:grid-cols-3 w-full px-6 md:px-8"
+  >
+    <!-- TODO: Show Rich Text -->
+    <p class="row-span-2 col-span-2 dark:text-white text-on-surface-secondary">
+      Content
+    </p>
+    <BlogItem
+      title="Title 1"
+      description="Description 1"
+      image="Image 1"
+      href="https://google.com"
+    />
+    <BlogItem
+      title="Title 2"
+      description="Description 2"
+      image="Image 2"
+      href="https://google.com"
+    />
+  </section>
+  <ClickToAction />
+</MainLayout>

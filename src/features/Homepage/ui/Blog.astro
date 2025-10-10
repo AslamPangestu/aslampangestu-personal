@@ -1,7 +1,37 @@
-<div class="grid grid-cols-1 md:grid-cols-2 w-full">
-  <div class="row-span-4">Card 1</div>
-  <div>Card 2</div>
-  <div>Card 3</div>
-  <div>Card 4</div>
-  <div>Card 5</div>
+---
+import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 w-full">
+  <BlogItem
+    containerClass="row-span-4 col-span-2"
+    title="Title 1"
+    description="Description 1"
+    image="Image 1"
+    href="https://google.com"
+  />
+  <BlogItem
+    title="Title 2"
+    description="Description 2"
+    image="Image 2"
+    href="https://google.com"
+  />
+  <BlogItem
+    title="Title 3"
+    description="Description 3"
+    image="Image 3"
+    href="https://google.com"
+  />
+  <BlogItem
+    title="Title 4"
+    description="Description 4"
+    image="Image 4"
+    href="https://google.com"
+  />
+  <BlogItem
+    title="Title 5"
+    description="Description 5"
+    image="Image 5"
+    href="https://google.com"
+  />
 </div>

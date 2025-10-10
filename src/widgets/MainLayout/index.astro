@@ -1,6 +1,8 @@
 ---
 import "@/app/styles/global.css";
 
+import cn from "@/shared/lib/cn";
+
 import Header from "./Header/index.astro";
 import Footer from "./Footer.astro";
 
@@ -8,9 +10,10 @@ interface Props {
   title: string;
   keyword: string;
   description: string;
+  containerClass?: string;
 }
 
-const { title, keyword, description } = Astro.props;
+const { title, keyword, description, containerClass } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -53,7 +56,7 @@ const currentPath = Astro.url.pathname;
     class="flex flex-col min-h-screen bg-white dark:bg-inverse-surface w-full"
   >
     <Header />
-    <main class="grow">
+    <main class={cn("grow", containerClass)}>
       <slot />
     </main>
     <Footer />

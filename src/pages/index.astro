@@ -1,7 +1,32 @@
 ---
+import Container from "@/features/Homepage/ui/Container.astro";
+import Welcome from "@/features/Homepage/ui/Welcome.astro";
+import AboutMe from "@/features/Homepage/ui/AboutMe.astro";
+import Portofolio from "@/features/Homepage/ui/Portofolio.astro";
+import Blog from "@/features/Homepage/ui/Blog.astro";
+import ClickToAction from "@/features/Homepage/ui/ClickToAction.astro";
+
 import MainLayout from "@/widgets/MainLayout/index.astro";
 ---
 
 <MainLayout>
-  <h1>Main Page</h1>
+  <Welcome />
+  <AboutMe />
+  <Container
+    title="Portofolio"
+    subtitle="Project Highlights"
+    description="I’ve worked on various full-stack projects ranging from custom dashboards, real-time chat applications, RESTful APIs, to scalable backend systems."
+    action={{ label: "View All Portofolio", href: "/projects" }}
+  >
+    <Portofolio />
+  </Container>
+  <Container
+    title="Blog"
+    subtitle="Insights & Tutorials"
+    description="I write about software engineering, clean architecture, full-stack development, and everything in between. These articles reflect what I’ve learned, built, and explored throughout my career."
+    action={{ label: "View All Blog", href: "/blogs" }}
+  >
+    <Blog />
+  </Container>
+  <ClickToAction />
 </MainLayout>

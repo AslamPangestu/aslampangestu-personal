@@ -1,7 +1,7 @@
 ---
 import "@/app/styles/global.css";
 
-import Header from "./Header.astro";
+import Header from "./Header/index.astro";
 import Footer from "./Footer.astro";
 
 interface Props {
@@ -29,8 +29,29 @@ const currentPath = Astro.url.pathname;
       name="google-site-verification"
       content="mXHHuKNjmt9G8Yl1I53YTOclJj9kQNBwqRn1Eb7JdGE"
     />
+    <script>
+      let currentTheme;
+      const storageTheme = localStorage.getItem("theme");
+      if (!storageTheme) {
+        const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+        localStorage.setItem("theme", preferredTheme);
+        currentTheme = preferredTheme;
+      } else {
+        currentTheme = storageTheme;
+      }
+      if (currentTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body
+    class="flex flex-col min-h-screen bg-white dark:bg-inverse-surface w-full"
+  >
     <Header />
     <main class="grow">
       <slot />

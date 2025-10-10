@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Global */
+  --color-primary: #2b53d9;
+  --color-white: #ffffff;
+
+  /* Specific */
+  --color-surface: #ffffff;
+  --color-on-surface: #38324a;
+  --color-on-surface-secondary: #99999b;
+  /* #99999B with 70% opacity */
+  --color-outline: rgba(153, 153, 153, 0.7); 
+
+  /* Inverse Specific */
+  --color-inverse-surface: #101010;
+  --color-inverse-on-surface: #ffffff;
+  --color-inverse-on-surface-secondary: #ffffff;
+  --color-inverse-outline: #ffffff; 
+}

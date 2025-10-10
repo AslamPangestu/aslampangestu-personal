@@ -1,0 +1,19 @@
+<button class="hidden md:block cursor-pointer" id="toggle-dark-mode">
+  Toggle Dark Mode
+</button>
+
+<script>
+  const button = document.getElementById("toggle-dark-mode");
+  button.addEventListener("click", () => {
+    const currentTheme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+    const value = currentTheme === "dark" ? "light" : "dark";
+    if (value === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", value);
+  });
+</script>

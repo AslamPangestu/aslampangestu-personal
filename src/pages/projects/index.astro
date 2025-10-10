@@ -1,7 +1,18 @@
 ---
+import TechStack from "@/features/Project/ui/TechStack.astro";
+import Main from "@/features/Project/ui/Main.astro";
+
+import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
+import ClickToAction from "@/widgets/ClickToAction.astro";
 ---
 
 <MainLayout>
-  <h1>Project Page</h1>
+  <Intro
+    title="WELCOME TO MY POROTOFLIO"
+    description="Welcome to my portfolio. Over the last 5 years, I have worked on a variety of real projects — ranging from admin dashboards, mobile applications, e-commerce, to chat systems and automation. Below, you can see some case studies and examples of my selected projects."
+  />
+  <TechStack />
+  <Main />
+  <ClickToAction />
 </MainLayout>

@@ -12,6 +12,7 @@
     "@astrojs/react": "^4.3.1",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^8.2.7",
+    "@fontsource-variable/geist": "^5.2.8",
     "@portabletext/sanity-bridge": "^1.1.10",
     "@sanity/astro": "^3.2.10",
     "@sanity/client": "^7.11.2",

@@ -6,17 +6,22 @@
   /* Global */
   --color-primary: #2b53d9;
   --color-white: #ffffff;
+  --font-geist: 'Geist Variable', sans-serif;
 
   /* Specific */
-  --color-surface: #ffffff;
   --color-on-surface: #38324a;
   --color-on-surface-secondary: #99999b;
   /* #99999B with 70% opacity */
-  --color-outline: rgba(153, 153, 153, 0.7); 
+  --color-outline: rgba(153, 153, 153, 0.7);
 
   /* Inverse Specific */
   --color-inverse-surface: #101010;
-  --color-inverse-on-surface: #ffffff;
-  --color-inverse-on-surface-secondary: #ffffff;
-  --color-inverse-outline: #ffffff; 
+}
+
+body {
+  @apply font-geist flex flex-col min-h-screen bg-white dark:bg-inverse-surface w-full;
+}
+
+@layer components {
+  @import "./button.component.css";
 }

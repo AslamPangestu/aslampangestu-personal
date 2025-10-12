@@ -16,6 +16,9 @@ const { image, title, description, href, containerClass } = Astro.props;
   <div class="flex flex-col gap-5">
     <h6 class="font-medium text-2xl text-on-surface dark:text-white">{title}</h6>
     <p class="text-sm text-on-surface-secondary dark:text-white">{description}</p>
-    <a href={href}>Continue Reading</a>
+    <a href={href} class="text-primary hover:underline flex flex-row items-center gap-1">
+      <span>Icon</span>
+      <span>Continue Reading</span>
+    </a>
   </div>
 </div>

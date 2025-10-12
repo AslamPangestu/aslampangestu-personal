@@ -8,17 +8,25 @@ const { slug } = Astro.params;
 ---
 
 <MainLayout>
-  <section class="container mx-auto w-full px-6 md:px-8 flex flex-col gap-8">
+  <section
+    class="container mx-auto w-full px-6 md:px-8 flex flex-col gap-8 mt-32"
+  >
     <a href="/blogs">Back to Blog</a>
-    <h1
-      class="font-black text-on-surface uppercase text-2xl md:text-4xl dark:text-white"
-    >
-      Title
-    </h1>
+    <div class="flex flex-col gap-2">
+      <h1
+        class="font-black text-on-surface uppercase text-2xl md:text-4xl dark:text-white"
+      >
+        Title
+      </h1>
+      <div class="flex flex-col">
+        <span class="text-sm text-on-surface-secondary">Publish At</span>
+        <span class="text-sm text-on-surface-secondary">Tags</span>
+      </div>
+    </div>
     <div>Header Image</div>
   </section>
   <section
-    class="container mx-auto grid grid-cols-1 md:grid-cols-3 w-full px-6 md:px-8"
+    class="container mx-auto grid grid-cols-1 md:grid-cols-3 w-full px-6 md:px-8 mb-12"
   >
     <!-- TODO: Show Rich Text -->
     <p class="row-span-2 col-span-2 dark:text-white text-on-surface-secondary">

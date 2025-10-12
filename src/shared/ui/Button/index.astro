@@ -1,0 +1,44 @@
+---
+import cn from "@/shared/lib/cn";
+
+interface Props {
+  label: string;
+  icon?: string;
+  type?: "button" | "link" | "submit";
+
+  href?: string;
+
+  rounded?: boolean;
+  color?: "primary" | "white";
+}
+
+const {
+  label,
+  icon,
+  type = "button",
+  href,
+  rounded,
+  color = "primary",
+} = Astro.props;
+---
+
+{
+  type === "link" ? (
+    <a
+      data-color={color}
+      class={cn("button-container", rounded && "rounded-full")}
+      href={href}
+    >
+      <div class={cn(rounded && "rounded-full")}>{label}</div>
+      {icon ? <div class={cn(rounded && "rounded-full")}>{icon}</div> : null}
+    </a>
+  ) : (
+    <button
+      data-color={color}
+      class={cn("button-container", rounded && "rounded-full")}
+    >
+      <div class={cn(rounded && "rounded-full")}>{label}</div>
+      {icon ? <div class={cn(rounded && "rounded-full")}>{icon}</div> : null}
+    </button>
+  )
+}

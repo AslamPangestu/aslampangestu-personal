@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 
+import Button from "@/shared/ui/Button/index.astro";
 ---
 
 <footer
@@ -9,9 +11,11 @@
     class="order-1 md:col-span-2 flex flex-col items-start md:items-center md:order-2"
   >
     <div class="flex flex-col items-start text-center md:items-center">
-      <span class="mb-6">Icon</span>
+      <div class="mb-6">
+        <Image src="/images/logo.svg" alt="Logo" width={116} />
+      </div>
       <span
-        class="mb-2 font-bold text-on-surface dark:text-inverse-on-surface text-base md:text-xl"
+        class="mb-2 font-bold text-on-surface dark:text-white text-base md:text-xl"
         >Muhammad Asslam Pangestu Idham</span
       >
       <span class="text-on-surface-secondary dark:text-white text-sm md:text-lg"
@@ -21,18 +25,17 @@
   </div>
   <div class="order-2 flex flex-col md:order-1">
     <span
-      class="mb-4 font-bold text-on-surface dark:text-inverse-on-surface text-base md:text-xl"
+      class="mb-4 font-bold text-on-surface dark:text-white text-base md:text-xl"
       >Let’s Work Together</span
     >
     <span
       class="mb-8 text-on-surface-secondary dark:text-white text-sm md:text-lg"
       >Have something in mind? Let’s chat.</span
     >
-    <span>Action</span>
+    <Button label="Contact Me" rounded color="primary" icon="A" />
   </div>
   <div class="order-3 flex flex-col gap-4">
-    <span
-      class="font-bold text-on-surface dark:text-inverse-on-surface text-base md:text-xl"
+    <span class="font-bold text-on-surface dark:text-white text-base md:text-xl"
       >Follow Me</span
     >
     <div class="flex flex-row gap-2">

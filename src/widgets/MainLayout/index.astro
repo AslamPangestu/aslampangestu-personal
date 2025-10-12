@@ -1,4 +1,8 @@
 ---
+// TODO: Refactor on Load Font
+import "@fontsource-variable/geist";
+import geistWoff2 from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+
 import "@/app/styles/global.css";
 
 import cn from "@/shared/lib/cn";
@@ -26,6 +30,13 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="preload"
+      href={geistWoff2}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta

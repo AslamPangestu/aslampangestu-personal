@@ -1,52 +1,91 @@
 ---
 import { Image } from "astro:assets";
 
-import ToggleDarkMode from "./ToggleDarkMode.astro";
+import { ROUTES } from "@/shared/config/route";
 
-const ROUTES = [
-  { name: "Home", href: "/" },
-  { name: "Portofolio", href: "/projects" },
-  { name: "Blog", href: "/blogs" },
-];
+import ToggleDarkMode from "./ToggleDarkMode.astro";
 
 const currentPath = new URL(Astro.request.url).pathname;
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex flex-row justify-between bg-transparent items-center py-8 px-6 md:px-8 container w-full mx-auto"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
 >
-  <div class="basis-1/2 md:basis-1/4">
-    <a href="/">
-      <Image src="/images/logo.svg" alt="Logo" width={78} height={48} />
-    </a>
+  <div
+    class="flex flex-row justify-between items-center py-8 px-6 md:px-8 container w-full mx-auto"
+  >
+    <div class="basis-1/2 md:basis-1/4">
+      <a href="/">
+        <Image src="/images/logo.svg" alt="Logo" width={78} height={48} />
+      </a>
+    </div>
+    <nav class="hidden md:block md:basis-1/2">
+      <ul class="flex justify-center flex-row gap-20">
+        {
+          ROUTES.map((route) => {
+            const selected = currentPath === route.href;
+            return (
+              <li class="flex justify-center items-center">
+                {selected ? (
+                  <span class="font-semibold text-lg text-primary">
+                    {route.name}
+                  </span>
+                ) : (
+                  <a
+                    href={route.href}
+                    class="font-semibold text-lg text-on-surface-secondary dark:text-white hover:text-primary hover:underline transition-all duration-300 ease-in-out"
+                  >
+                    {route.name}
+                  </a>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+    <div class="md:hidden basis-1/2 flex flex-row justify-end">
+      <span>Menu</span>
+    </div>
+    <ToggleDarkMode />
   </div>
-  <nav class="hidden md:block md:basis-1/2">
-    <ul class="flex justify-center flex-row gap-20">
-      {
-        ROUTES.map((route) => {
-          const selected = currentPath === route.href;
-          return (
-            <li class="flex justify-center items-center">
-              {selected ? (
-                <span class="font-semibold text-lg text-primary">
-                  {route.name}
-                </span>
-              ) : (
-                <a
-                  href={route.href}
-                  class="font-semibold text-lg text-on-surface-secondary dark:text-white hover:text-primary hover:underline transition-all duration-300 ease-in-out"
-                >
-                  {route.name}
-                </a>
-              )}
-            </li>
-          );
-        })
-      }
-    </ul>
-  </nav>
-  <div class="md:hidden basis-1/2 flex flex-row justify-end">
-    <span>Menu</span>
-  </div>
-  <ToggleDarkMode />
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementsByTagName("header")[0];
+    if (window.scrollY >= 120) {
+      header.classList.add(
+        "bg-white/10",
+        "backdrop-blur-md",
+        "dark:bg-surface-900/50",
+      );
+      header.classList.remove("bg-transparent", "backdrop-blur-0");
+    } else {
+      header.classList.add("bg-transparent", "backdrop-blur-0");
+      header.classList.remove(
+        "bg-white/10",
+        "backdrop-blur-md",
+        "dark:bg-surface-900/50",
+      );
+    }
+  });
+  window.addEventListener("scroll", () => {
+    const header = document.getElementsByTagName("header")[0];
+    if (window.scrollY >= 120) {
+      header.classList.add(
+        "bg-white/10",
+        "backdrop-blur-md",
+        "dark:bg-surface-900/50",
+      );
+      header.classList.remove("bg-transparent", "backdrop-blur-0");
+    } else {
+      header.classList.add("bg-transparent", "backdrop-blur-0");
+      header.classList.remove(
+        "bg-white/10",
+        "backdrop-blur-md",
+        "dark:bg-surface-900/50",
+      );
+    }
+  });
+</script>

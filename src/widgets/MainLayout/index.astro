@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname;
       name="google-site-verification"
       content="mXHHuKNjmt9G8Yl1I53YTOclJj9kQNBwqRn1Eb7JdGE"
     />
-    <script>
+    <script is:inline>
       let currentTheme;
       const storageTheme = localStorage.getItem("theme");
       if (!storageTheme) {
@@ -61,11 +61,10 @@ const currentPath = Astro.url.pathname;
       } else {
         document.documentElement.classList.remove("dark");
       }
+      window.__THEME__ = currentTheme;
     </script>
   </head>
-  <body
-    class="flex flex-col min-h-screen bg-white dark:bg-inverse-surface w-full"
-  >
+  <body>
     <Header />
     <main class={cn("grow", containerClass)}>
       <slot />

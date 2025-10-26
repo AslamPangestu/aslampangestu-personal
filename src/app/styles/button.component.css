@@ -12,7 +12,7 @@
 
 /* Color */
 .button-container[data-color="primary"] {
-    @apply text-white;
+    @apply text-surface;
 }
 .button-container[data-color="primary"]:hover {
     @apply bg-primary;
@@ -25,8 +25,8 @@
     @apply text-primary;
 }
 .button-container[data-color="white"]:hover {
-    @apply bg-white;
+    @apply bg-surface;
 }
 .button-container[data-color="white"]>* {
-    @apply bg-white;
+    @apply bg-surface;
 }

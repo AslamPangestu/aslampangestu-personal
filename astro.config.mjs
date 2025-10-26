@@ -7,8 +7,6 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import sanity from "@sanity/astro";
 
-import svelte from "@astrojs/svelte";
-
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV,
   process.cwd(),
@@ -38,6 +36,5 @@ export default defineConfig({
       studioBasePath: "/dashboard",
     }),
     react(),
-    svelte(),
   ],
 });

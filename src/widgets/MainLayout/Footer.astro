@@ -5,37 +5,41 @@ import Button from "@/shared/ui/Button/index.astro";
 ---
 
 <footer
-  class="grid grid-cols-1 md:grid-cols-4 py-8 px-6 md:px-8 bg-transparent container w-full mx-auto gap-4"
+  class="grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid py-8 px-6 md:px-8 bg-transparent container w-full mx-auto gap-4"
 >
   <div
-    class="order-1 md:col-span-2 flex flex-col items-start md:items-center md:order-2"
+    class="order-1 lg:col-span-2 flex flex-col items-start md:items-center md:order-3 md:col-span-2"
   >
     <div class="flex flex-col items-start text-center md:items-center">
       <div class="mb-6">
         <Image src="/images/logo.svg" alt="Logo" width={116} />
       </div>
       <span
-        class="mb-2 font-bold text-on-surface dark:text-white text-base md:text-xl"
+        class="mb-2 font-bold text-on-surface dark:text-surface text-base md:text-xl"
         >Muhammad Asslam Pangestu Idham</span
       >
-      <span class="text-on-surface-secondary dark:text-white text-sm md:text-lg"
+      <span
+        class="text-on-surface-secondary dark:text-surface text-sm md:text-lg"
         >Building scalable, human-centered digital solutions.</span
       >
     </div>
   </div>
+
   <div class="order-2 flex flex-col md:order-1">
     <span
-      class="mb-4 font-bold text-on-surface dark:text-white text-base md:text-xl"
+      class="mb-4 font-bold text-on-surface dark:text-surface text-base md:text-xl"
       >Let’s Work Together</span
     >
     <span
-      class="mb-8 text-on-surface-secondary dark:text-white text-sm md:text-lg"
+      class="mb-8 text-on-surface-secondary dark:text-surface text-sm md:text-lg"
       >Have something in mind? Let’s chat.</span
     >
     <Button label="Contact Me" rounded color="primary" icon="A" />
   </div>
-  <div class="order-3 flex flex-col gap-4">
-    <span class="font-bold text-on-surface dark:text-white text-base md:text-xl"
+
+  <div class="order-3 md:order-2 lg:order-3 flex flex-col gap-4">
+    <span
+      class="font-bold text-on-surface dark:text-surface text-base md:text-xl"
       >Follow Me</span
     >
     <div class="flex flex-row gap-2">
@@ -45,8 +49,9 @@ import Button from "@/shared/ui/Button/index.astro";
       <span>Icon</span>
     </div>
   </div>
+
   <div
-    class="p-8 text-center text-on-surface-secondary dark:text-white text-sm md:text-lg order-4 md:col-span-4"
+    class="p-8 text-center text-on-surface-secondary dark:text-surface text-sm md:text-lg order-4 md:col-span-2 lg:col-span-4"
   >
     © 2025 Muhammad Asslam Pangestu Idham. All rights reserved.
   </div>

@@ -5,7 +5,8 @@
       "@/*": ["./src/*"]
     },
     "moduleResolution": "Bundler",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "types": ["astro/client"]
   },
   "extends": "astro/tsconfigs/strict",

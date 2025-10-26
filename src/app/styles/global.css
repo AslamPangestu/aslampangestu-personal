@@ -3,23 +3,25 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Global */
-  --color-primary: #2b53d9;
-  --color-white: #ffffff;
   --font-geist: 'Geist Variable', sans-serif;
 
-  /* Specific */
+  /* Main Color */
+  --color-primary: #2b53d9;
+  /* #2B53D9 with 45% opacity */
+  --color-primary-container: rgba(245, 245, 245, 0.45);
+  --color-surface: #ffffff;
   --color-on-surface: #38324a;
   --color-on-surface-secondary: #99999b;
   /* #99999B with 70% opacity */
   --color-outline: rgba(153, 153, 153, 0.7);
 
-  /* Inverse Specific */
+  /* Inverse Color */
+  --color-inverse-primary-container: rgba(18, 18, 18, 0.45);
   --color-inverse-surface: #101010;
 }
 
 body {
-  @apply font-geist flex flex-col min-h-screen bg-white dark:bg-inverse-surface w-full;
+  @apply font-geist flex flex-col min-h-screen bg-surface dark:bg-inverse-surface w-full;
 }
 
 @layer components {

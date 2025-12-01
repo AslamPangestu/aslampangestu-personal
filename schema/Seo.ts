@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField } from "sanity";
+import { defineField } from "sanity";
 
 export default [
   defineField({

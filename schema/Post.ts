@@ -4,13 +4,6 @@ import { format, parseISO } from "date-fns";
 
 import Seo from "./Seo";
 
-/**
- * Here you can see the different schema types that are available:
-
-  https://www.sanity.io/docs/schema-types
-
- */
-
 export default defineType({
   name: "post",
   title: "Post",
@@ -21,6 +14,7 @@ export default defineType({
     defineField({
       name: "tags",
       title: "Tags",
+      description: "This is the tags of your post.",
       type: "array",
       of: [{ type: "string" }],
       options: {
@@ -30,6 +24,7 @@ export default defineType({
     defineField({
       name: "slug",
       title: "Slug",
+      description: "This is the slug of your post.",
       type: "slug",
       options: {
         source: "title",
@@ -41,6 +36,7 @@ export default defineType({
     defineField({
       name: "content",
       title: "Content",
+      description: "This is the content of your post.",
       type: "array",
       of: [
         { type: "block" },
@@ -79,6 +75,7 @@ export default defineType({
     defineField({
       name: "date",
       title: "Date",
+      description: "This is the date of your post.",
       type: "datetime",
       options: { dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss" },
       initialValue: () => new Date().toISOString(),

@@ -1,13 +1,6 @@
 import { ImageIcon, ProjectsIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-/**
- * Here you can see the different schema types that are available:
-
-  https://www.sanity.io/docs/schema-types
-
- */
-
 export default defineType({
   name: "project",
   title: "Project",
@@ -16,7 +9,7 @@ export default defineType({
   fields: [
     defineField({
       name: "title",
-      description: "This field is the title of your web page.",
+      description: "This field is the title of your project.",
       title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
@@ -35,30 +28,26 @@ export default defineType({
     defineField({
       name: "duration",
       title: "Duration",
+      description: "This field is the duration of your project.",
       type: "duration",
     }),
     defineField({
       name: "client",
       title: "Client",
+      description: "This field is the client of your project.",
       type: "string",
     }),
     defineField({
-      name: "site",
-      title: "Site",
-      type: "url",
-    }),
-    defineField({
-      name: "tags",
-      title: "Role",
-      type: "array",
-      of: [{ type: "string" }],
-      options: {
-        layout: "tags",
-      },
+      name: "skill",
+      title: "Skill",
+      description: "This field is the skill of your project.",
+      type: "reference",
+      to: [{ type: "skill" }],
     }),
     defineField({
       name: "projectDescription",
       title: "Project Description",
+      description: "This field is the description of your project.",
       type: "array",
       of: [
         defineArrayMember({
@@ -111,6 +100,12 @@ export default defineType({
           ],
         }),
       ],
+    }),
+    defineField({
+      name: "site",
+      title: "Site",
+      description: "This field is the site of your project.",
+      type: "url",
     }),
   ],
 });

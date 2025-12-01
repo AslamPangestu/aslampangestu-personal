@@ -3,13 +3,6 @@ import { defineField, defineType } from "sanity";
 
 import Seo from "./Seo";
 
-/**
- * Here you can see the different schema types that are available:
-
-  https://www.sanity.io/docs/schema-types
-
- */
-
 export default defineType({
   name: "page",
   title: "Page",
@@ -18,9 +11,16 @@ export default defineType({
   fields: [
     ...Seo,
     defineField({
-      name: "jsonContent",
-      title: "JSON Content",
-      type: "text",
+      name: "content",
+      title: "Content",
+      description: "This field is the content of your page.",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "blockContent" }],
+        },
+      ],
     }),
   ],
 });

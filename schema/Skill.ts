@@ -10,19 +10,22 @@ export default defineType({
     defineField({
       name: "name",
       title: "Name",
+      description: "This is the name of your skill.",
       type: "string",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "role",
+      title: "Role",
+      description: "This is the role of your skill.",
+      type: "reference",
+      to: [{ type: "role" }],
     }),
     defineField({
       name: "icon",
       title: "Icon",
+      description: "This is the icon of your skill.",
       type: "string",
-    }),
-    defineField({
-      name: "key",
-      title: "Key",
-      type: "string",
-      validation: (rule) => rule.required(),
     }),
   ],
 });

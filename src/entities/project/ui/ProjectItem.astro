@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+
+import type { Project } from "@/entities/project/model/type";
+
+import cn from "@/shared/lib/cn";
+import { getImageUrl } from "@/shared/lib/sanity-image-url";
+
+type Props = Project;
+const { coverImage, title } = Astro.props;
+
+const imageUrl = coverImage ? getImageUrl(coverImage).url() : "";
+---
+
+<div
+  class="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-4xl"
+>
+  {
+    imageUrl && (
+      <Image
+        src={imageUrl}
+        alt={title}
+        width={800}
+        height={600}
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    )
+  }
+  <div class="relative z-10 flex h-full flex-col justify-between">
+    <div class="flex justify-end text-white">
+      <div>View Project</div>
+    </div>
+    <div class="rounded-4xl bg-black/80 px-8 py-9 text-white">
+      <h4 class="mb-2.5 text-3xl font-extrabold">{title}</h4>
+      <span class="text-lg font-extralight">Stack</span>
+      <p class="mt-5 line-clamp-3 text-lg font-medium">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
+</div>

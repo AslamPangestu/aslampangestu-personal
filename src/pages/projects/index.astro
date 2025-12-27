@@ -1,5 +1,6 @@
 ---
-import { sanityClient } from "sanity:client";
+import { GetPage } from "@/entities/page/model/queries";
+import { GetProjectsWithLimit } from "@/entities/project/model/queries";
 
 import TechStack from "@/features/Project/ui/TechStack.astro";
 import Main from "@/features/Project/ui/Main.astro";
@@ -8,9 +9,9 @@ import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
 
-const page = await sanityClient.fetch(
-  '*[_type == "page" && name == "project"][0]{..., content[]->{...}}'
-);
+const page = await GetPage({ name: "project" });
+const portofolios = await GetProjectsWithLimit({ limit: 4 });
+
 const hero = page.content[0];
 ---
 
@@ -21,6 +22,6 @@ const hero = page.content[0];
 >
   <Intro {...hero} />
   <TechStack />
-  <Main />
+  <Main data={portofolios} />
   <ClickToAction />
 </MainLayout>

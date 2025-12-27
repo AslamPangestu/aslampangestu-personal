@@ -1,21 +1,27 @@
 ---
+import type { BlockContent } from "@/entities/page/model/type";
+
 import Button from "@/shared/ui/Button/index.astro";
+
+type Props = BlockContent;
+
+const { title, subtitle } = Astro.props;
 ---
 
-<section class="h-screen flex flex-col justify-between">
+<section class="flex h-screen flex-col justify-between">
   <div
-    class="container w-full mx-auto px-6 md:px-8 grow flex flex-col justify-center"
+    class="container mx-auto flex w-full grow flex-col justify-center px-6 md:px-8"
   >
     <div>
-      <div class="flex flex-col gap-2.5 mb-16">
+      <div class="mb-16 flex flex-col gap-2.5">
         <span
-          class="uppercase text-on-surface text-sm md:text-2xl dark:text-surface"
-          >Hi, I AM Muhammad Asslam pangestu Idham
+          class="text-on-surface dark:text-surface text-sm uppercase md:text-2xl"
+          >{title}
         </span>
         <h1
-          class="uppercase font-black text-on-surface text-2xl md:text-7xl dark:text-surface"
+          class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-7xl"
         >
-          Software Engineering
+          {subtitle}
         </h1>
       </div>
       <Button label="Lets Talk With Me" rounded color="primary" icon="A" />

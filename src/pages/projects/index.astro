@@ -1,17 +1,25 @@
 ---
+import { sanityClient } from "sanity:client";
+
 import TechStack from "@/features/Project/ui/TechStack.astro";
 import Main from "@/features/Project/ui/Main.astro";
 
 import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
+
+const page = await sanityClient.fetch(
+  '*[_type == "page" && name == "project"][0]{..., content[]->{...}}'
+);
+const hero = page.content[0];
 ---
 
-<MainLayout>
-  <Intro
-    title="WELCOME TO MY POROTOFLIO"
-    description="Welcome to my portfolio. Over the last 5 years, I have worked on a variety of real projects — ranging from admin dashboards, mobile applications, e-commerce, to chat systems and automation. Below, you can see some case studies and examples of my selected projects."
-  />
+<MainLayout
+  title={page.title}
+  keyword={page.keyword}
+  description={page.description}
+>
+  <Intro {...hero} />
   <TechStack />
   <Main />
   <ClickToAction />

@@ -22,6 +22,6 @@ export default [
       "Used both for the <meta> description tag for SEO of your web page.",
     title: "Description",
     type: "text",
-    validation: (rule) => rule.max(155).required(),
+    validation: (rule) => rule.min(150).max(160).required(),
   }),
 ];

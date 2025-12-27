@@ -1,49 +1,58 @@
 ---
+import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+
+import { GetBlogBySlug } from "@/features/Blog/model/queries";
+
+import PortableText from "@/shared/ui/PortableText/index.astro";
 
 import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
 
 const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect("/blogs");
+}
+const post = await GetBlogBySlug({ slug });
+const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
 ---
 
-<MainLayout>
+<MainLayout
+  title={post.title}
+  keyword={post.keyword}
+  description={post.description}
+>
   <section
-    class="container mx-auto w-full px-6 md:px-8 flex flex-col gap-8 mt-32"
+    class="container mx-auto mt-32 flex w-full flex-col gap-8 px-6 md:px-8"
   >
     <a href="/blogs">Back to Blog</a>
     <div class="flex flex-col gap-2">
       <h1
-        class="font-black text-on-surface uppercase text-2xl md:text-4xl dark:text-surface"
+        class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-4xl"
       >
-        Title
+        {post.title}
       </h1>
       <div class="flex flex-col">
-        <span class="text-sm text-on-surface-secondary">Publish At</span>
-        <span class="text-sm text-on-surface-secondary">Tags</span>
+        <span class="text-on-surface-secondary text-sm"
+          >Publish At: {post.date}</span
+        >
+        <span class="text-on-surface-secondary text-sm">Tags</span>
       </div>
     </div>
     <div>Header Image</div>
   </section>
   <section
-    class="container mx-auto grid grid-cols-1 md:grid-cols-3 w-full px-6 md:px-8 mb-12"
+    class="container mx-auto mb-12 grid w-full grid-cols-1 px-6 md:grid-cols-3 md:px-8"
   >
-    <!-- TODO: Show Rich Text -->
-    <p class="row-span-2 col-span-2 dark:text-surface text-on-surface-secondary">
-      Content
-    </p>
-    <BlogItem
-      title="Title 1"
-      description="Description 1"
-      image="Image 1"
-      href="https://google.com"
-    />
-    <BlogItem
-      title="Title 2"
-      description="Description 2"
-      image="Image 2"
-      href="https://google.com"
-    />
+    <div
+      class="dark:text-surface text-on-surface-secondary col-span-2 row-span-2"
+    >
+      <PortableText value={post.content} />
+    </div>
+    <div class="flex flex-col gap-6">
+      {latestBlogs.map((blog) => <BlogItem {...blog} />)}
+    </div>
   </section>
   <ClickToAction />
 </MainLayout>

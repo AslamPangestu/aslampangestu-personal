@@ -1,18 +1,30 @@
 ---
+import { sanityClient } from "sanity:client";
+
+import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
+
 import Highlight from "@/features/Blog/ui/Highlight.astro";
 import Main from "@/features/Blog/ui/Main.astro";
 
 import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
+
+const page = await sanityClient.fetch(
+  '*[_type == "page" && name == "blog"][0]{..., content[]->{...}}'
+);
+const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
+const blogs = await GetBlogsWithLimit({ limit: 6 });
+const hero = page.content[0];
 ---
 
-<MainLayout>
-  <Intro
-    title="Welcome to My Blog"
-    description="Welcome to my blog — a space where I share insights, lessons, and experiences gathered from working in real-world software development. From clean architecture, system design, to productivity tips — each article reflects my continuous journey of growth and learning in tech."
-  />
-  <Highlight />
-  <Main />
+<MainLayout
+  title={page.title}
+  keyword={page.keyword}
+  description={page.description}
+>
+  <Intro {...hero} />
+  <Highlight data={latestBlogs} />
+  <Main data={blogs} />
   <ClickToAction />
 </MainLayout>

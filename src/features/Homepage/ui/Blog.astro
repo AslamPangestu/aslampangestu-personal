@@ -1,37 +1,28 @@
 ---
+import type { BaseBlog } from "@/entities/blog/model/type";
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+
+import cn from "@/shared/lib/cn";
+
+interface Props {
+  data: BaseBlog[];
+}
+
+const { data } = Astro.props;
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 w-full">
-  <BlogItem
-    containerClass="row-span-4 col-span-2"
-    title="Title 1"
-    description="Description 1"
-    image="Image 1"
-    href="https://google.com"
-  />
-  <BlogItem
-    title="Title 2"
-    description="Description 2"
-    image="Image 2"
-    href="https://google.com"
-  />
-  <BlogItem
-    title="Title 3"
-    description="Description 3"
-    image="Image 3"
-    href="https://google.com"
-  />
-  <BlogItem
-    title="Title 4"
-    description="Description 4"
-    image="Image 4"
-    href="https://google.com"
-  />
-  <BlogItem
-    title="Title 5"
-    description="Description 5"
-    image="Image 5"
-    href="https://google.com"
-  />
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-[1fr_450px]">
+  {
+    data.map((item, index) => (
+      <BlogItem
+        containerClass={cn(
+          "last:flex last:md:hidden last:lg:flex",
+          index === 0
+            ? "lg:col-start-1 lg:row-span-4 lg:[&>*:first-child]:h-[75%] xl:[&>*:first-child]:h-auto"
+            : "lg:flex-row lg:items-center lg:col-start-2 lg:[&>*:first-child]:w-[180px]"
+        )}
+        {...item}
+      />
+    ))
+  }
 </div>

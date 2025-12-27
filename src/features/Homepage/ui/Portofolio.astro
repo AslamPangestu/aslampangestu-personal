@@ -1,10 +1,15 @@
-<div class="flex flex-row w-full gap-5">
+---
+interface Props {
+  data: unknown[];
+}
+
+const { data } = Astro.props;
+---
+
+<div class="flex w-full flex-row gap-5">
   <span>Filter 1</span>
   <span>Filter 2</span>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 w-full gap-5">
-  <div>Card 1</div>
-  <div>Card 2</div>
-  <div>Card 3</div>
-  <div>Card 4</div>
+<div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+  {data.map((item, index) => <div>Card {index}</div>)}
 </div>

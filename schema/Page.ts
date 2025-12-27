@@ -9,6 +9,12 @@ export default defineType({
   icon: DocumentIcon,
   type: "document",
   fields: [
+    defineField({
+      name: "name",
+      title: "Name",
+      description: "This field is the name of your page.",
+      type: "string",
+    }),
     ...Seo,
     defineField({
       name: "content",

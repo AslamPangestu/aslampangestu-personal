@@ -1,4 +1,8 @@
 ---
+import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
+import { GetPage } from "@/entities/page/model/queries";
+import { GetProjectsWithLimit } from "@/entities/project/model/queries";
+
 import Container from "@/features/Homepage/ui/Container.astro";
 import Welcome from "@/features/Homepage/ui/Welcome.astro";
 import AboutMe from "@/features/Homepage/ui/AboutMe.astro";
@@ -7,25 +11,39 @@ import Blog from "@/features/Homepage/ui/Blog.astro";
 
 import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
+
+const page = await GetPage({ name: "homepage" });
+const portofolios = await GetProjectsWithLimit({ limit: 4 });
+const blogs = await GetBlogsWithLimit({ limit: 5 });
+
+const hero = page.content[0];
+const aboutMe = page.content[1];
+const portofolio = page.content[2];
+const blog = page.content[3];
 ---
-<MainLayout>
-  <Welcome />
-  <AboutMe />
+
+<MainLayout
+  title={page.title}
+  keyword={page.keyword}
+  description={page.description}
+>
+  <Welcome {...hero} />
+  <AboutMe {...aboutMe} />
   <Container
-    title="Portofolio"
-    subtitle="Project Highlights"
-    description="I’ve worked on various full-stack projects ranging from custom dashboards, real-time chat applications, RESTful APIs, to scalable backend systems."
+    title={portofolio.title}
+    subtitle={portofolio.subtitle}
+    description={portofolio.description}
     action={{ label: "View All Portofolio", href: "/projects" }}
   >
-    <Portofolio />
+    <Portofolio data={portofolios} />
   </Container>
   <Container
-    title="Blog"
-    subtitle="Insights & Tutorials"
-    description="I write about software engineering, clean architecture, full-stack development, and everything in between. These articles reflect what I’ve learned, built, and explored throughout my career."
+    title={blog.title}
+    subtitle={blog.subtitle}
+    description={blog.description}
     action={{ label: "View All Blog", href: "/blogs" }}
   >
-    <Blog />
+    <Blog data={blogs} />
   </Container>
   <ClickToAction />
 </MainLayout>

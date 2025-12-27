@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { ArrowRightIcon } from "@sanity/icons";
-import { Box, Flex, Text } from "@sanity/ui";
+import { Box, Flex } from "@sanity/ui";
 import { MemberField } from "sanity";
 import type {
   FieldMember,
@@ -16,8 +15,8 @@ const DurationInput = (props: ObjectInputProps) => {
     [members],
   );
 
-  const start = fieldMembers.find((mem) => mem.name === "start");
-  const end = fieldMembers.find((mem) => mem.name === "end");
+  const key = fieldMembers.find((mem) => mem.name === "key");
+  const value = fieldMembers.find((mem) => mem.name === "value");
 
   const renderField: RenderFieldCallback = useCallback(
     (props) => props.children,
@@ -31,15 +30,10 @@ const DurationInput = (props: ObjectInputProps) => {
 
   return (
     <Flex align="center" gap={3}>
+      <Box flex={1}>{key && <MemberField {...renderProps} member={key} />}</Box>
       <Box flex={1}>
-        {start && <MemberField {...renderProps} member={start} />}
+        {value && <MemberField {...renderProps} member={value} />}
       </Box>
-      <Box>
-        <Text muted>
-          <ArrowRightIcon />
-        </Text>
-      </Box>
-      <Box flex={1}>{end && <MemberField {...renderProps} member={end} />}</Box>
     </Flex>
   );
 };

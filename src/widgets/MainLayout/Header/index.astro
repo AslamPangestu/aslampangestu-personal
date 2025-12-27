@@ -9,31 +9,31 @@ const currentPath = new URL(Astro.request.url).pathname;
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
+  class="fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out"
 >
   <div
-    class="flex flex-row justify-between items-center py-8 px-6 lg:px-8 container w-full mx-auto"
+    class="container mx-auto flex w-full flex-row items-center justify-between px-6 py-8 lg:px-8"
   >
     <div class="basis-1/2 lg:basis-1/4">
-      <a href="/" class="w-[78px] h-[48px] block">
+      <a href="/" class="block h-[48px] w-[78px]">
         <Image src="/images/logo.svg" alt="Logo" width={78} height={48} />
       </a>
     </div>
     <nav class="hidden lg:block lg:basis-1/2">
-      <ul class="flex justify-center flex-row gap-20">
+      <ul class="flex flex-row justify-center gap-20">
         {
           ROUTES.map((route) => {
             const selected = currentPath === route.href;
             return (
-              <li class="flex justify-center items-center">
+              <li class="flex items-center justify-center">
                 {selected ? (
-                  <span class="font-semibold text-lg text-primary">
+                  <span class="text-primary text-lg font-semibold">
                     {route.name}
                   </span>
                 ) : (
                   <a
                     href={route.href}
-                    class="font-semibold text-lg text-on-surface-secondary dark:text-surface hover:text-primary hover:underline transition-all duration-300 ease-in-out"
+                    class="text-on-surface-secondary dark:text-surface hover:text-primary text-lg font-semibold transition-all duration-300 ease-in-out hover:underline"
                   >
                     {route.name}
                   </a>
@@ -44,10 +44,10 @@ const currentPath = new URL(Astro.request.url).pathname;
         }
       </ul>
     </nav>
-    <div class="lg:hidden basis-1/2 flex flex-row justify-end">
+    <div class="flex basis-1/2 flex-row justify-end lg:hidden">
       <span>Menu</span>
     </div>
-    <div class="hidden lg:basis-1/4 lg:flex lg:justify-end">
+    <div class="hidden lg:flex lg:basis-1/4 lg:justify-end">
       <ToggleDarkMode client:only="react" />
     </div>
   </div>

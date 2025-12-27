@@ -6,6 +6,7 @@ import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import sanity from "@sanity/astro";
+import icon from "astro-icon";
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV,
@@ -36,5 +37,6 @@ export default defineConfig({
       studioBasePath: "/dashboard",
     }),
     react(),
+    icon(),
   ],
 });

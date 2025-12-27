@@ -13,13 +13,13 @@ export const GetPaginatedBlogs = ({
   return sanityClient.fetch(
     `{
       "posts": *[_type == "post" && defined(slug.current)] 
-        | order(date desc) 
+        | order(_createdAt desc) 
         [$start...$end]{
           _id,
           title,
           slug,
           coverImage,
-          date,
+          _createdAt,
           tags,
           description
         },

@@ -11,7 +11,7 @@ import MainLayout from "@/widgets/MainLayout/index.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
 
 const page = await sanityClient.fetch(
-  '*[_type == "page" && name == "blog"][0]{..., content[]->{...}}'
+  '*[_type == "page" && name == "blog"][0]{..., content[]->{...}}',
 );
 const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
 const blogs = await GetBlogsWithLimit({ limit: 6 });

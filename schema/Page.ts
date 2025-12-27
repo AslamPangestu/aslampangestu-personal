@@ -12,8 +12,9 @@ export default defineType({
     defineField({
       name: "name",
       title: "Name",
-      description: "This field is the name of your page.",
+      description: "This field is the identifier of your page.",
       type: "string",
+      validation: (rule) => rule.required(),
     }),
     ...Seo,
     defineField({
@@ -24,9 +25,17 @@ export default defineType({
       of: [
         {
           type: "reference",
-          to: [{ type: "blockContent" }],
+          to: [{ type: "blockContent" }, { type: "callToAction" }],
         },
       ],
     }),
   ],
+  preview: {
+    select: {
+      name: "name",
+    },
+    prepare({ name }) {
+      return { title: name };
+    },
+  },
 });

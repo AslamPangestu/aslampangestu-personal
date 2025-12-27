@@ -9,48 +9,28 @@ export default defineType({
   fields: [
     defineField({
       name: "name",
-      description: "This field is the identifier of your content.",
+      description: "This field is the identifier of your block.",
       title: "Name",
       type: "string",
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "title",
-      description: "This field is the title of your content.",
-      title: "Title",
-      type: "string",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "subtitle",
-      description: "This field is the subtitle of your content.",
-      title: "Subtitle",
-      type: "string",
-    }),
-    defineField({
-      name: "description",
-      description: "This field is the description of your content.",
-      title: "Description",
-      type: "text",
-    }),
-    defineField({
-      name: "image",
-      title: "Image",
-      description: "This image will be used as the image for the content.",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: "content",
       title: "Content",
-      description: "This field is the content of your content.",
+      description:
+        "This field is the content of your block by using key-value pairs.",
+      type: "array",
+      of: [{ type: "keyValue" }],
+    }),
+    defineField({
+      name: "collection",
+      title: "Collection",
+      description: "This field is the collection of your block.",
       type: "array",
       of: [
         {
           type: "reference",
-          to: [{ type: "project" }, { type: "post" }, { type: "role" }],
+          to: [{ type: "project" }, { type: "post" }],
         },
       ],
     }),

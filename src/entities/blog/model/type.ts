@@ -25,5 +25,4 @@ export interface Blog extends BaseBlog {
   // Post-specific fields
   tags?: string[];
   content?: ContentItem[];
-  date?: string; // ISO datetime string
 }

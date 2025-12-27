@@ -1,5 +1,7 @@
-import { StackIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { StackIcon } from "@sanity/icons";
+
+import IconPreview from "./IconPreview";
 
 export default defineType({
   name: "skill",
@@ -7,6 +9,12 @@ export default defineType({
   icon: StackIcon,
   type: "document",
   fields: [
+    defineField({
+      name: "icon",
+      title: "Icon",
+      description: "This is the icon of your skill.",
+      type: "icon",
+    }),
     defineField({
       name: "name",
       title: "Name",
@@ -21,11 +29,19 @@ export default defineType({
       type: "reference",
       to: [{ type: "role" }],
     }),
-    defineField({
-      name: "icon",
-      title: "Icon",
-      description: "This is the icon of your skill.",
-      type: "string",
-    }),
   ],
+  preview: {
+    select: {
+      name: "name",
+      icon: "icon",
+    },
+    prepare({ name, icon }) {
+      const iconName = icon?.name;
+      return {
+        title: name,
+        subtitle: iconName,
+        media: iconName ? () => IconPreview({ title: iconName }) : null,
+      };
+    },
+  },
 });

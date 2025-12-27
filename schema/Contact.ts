@@ -1,5 +1,7 @@
-import { DocumentsIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { DocumentsIcon } from "@sanity/icons";
+
+import IconPreview from "./IconPreview";
 
 export default defineType({
   name: "contact",
@@ -8,17 +10,17 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "icon",
+      title: "Icon",
+      description: "This field is the icon of your contact.",
+      type: "icon",
+    }),
+    defineField({
       name: "name",
       title: "Name",
       description: "This field is the name of your contact.",
       type: "string",
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "icon",
-      title: "Icon",
-      description: "This field is the icon of your contact.",
-      type: "string",
     }),
     defineField({
       name: "value",
@@ -31,9 +33,15 @@ export default defineType({
   preview: {
     select: {
       name: "name",
+      icon: "icon",
     },
-    prepare({ name }) {
-      return { title: name };
+    prepare({ name, icon }) {
+      const iconName = icon?.name;
+      return {
+        title: name,
+        subtitle: iconName,
+        media: iconName ? () => IconPreview({ title: iconName }) : null,
+      };
     },
   },
 });

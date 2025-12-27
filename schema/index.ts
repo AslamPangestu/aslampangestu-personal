@@ -3,16 +3,18 @@ import Page from "./Page";
 import Post from "./Post";
 import Project from "./Project";
 import User from "./User";
-import BlockContent from "./BlockContent";
 
-// Block Module
+/// Block Module
+import BlockContent from "./BlockContent";
 import Contact from "./Contact";
 import Skill from "./Skill";
 import Role from "./Role";
+import PostTag from "./PostTag";
+import CallToAction from "./CallToAction";
 
 /// Component Module
-import CallToAction from "./CallToAction";
 import Duration from "./Duration";
+import KeyValue from "./KeyValue";
 
 /**
  * Here you can see the different schema types that are available:
@@ -23,13 +25,15 @@ import Duration from "./Duration";
 
 export default [
   Duration,
+  KeyValue,
   Page,
-  Post,
-  Project,
-  User,
   BlockContent,
+  Post,
+  PostTag,
+  Project,
   Contact,
   Skill,
   Role,
   CallToAction,
+  User,
 ];

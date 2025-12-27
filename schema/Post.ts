@@ -16,7 +16,7 @@ export default defineType({
       title: "Tags",
       description: "This is the tags of your post.",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "reference", to: [{ type: "postTag" }] }],
       options: {
         layout: "tags",
       },
@@ -34,12 +34,66 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      description:
+        "This image will be used as the cover image for the blog post. If you choose to add it, this is the image displayed in the list within the homepage.",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "content",
       title: "Content",
       description: "This is the content of your post.",
       type: "array",
       of: [
-        { type: "block" },
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [
+            { title: "Bullet", value: "bullet" },
+            { title: "Numbered", value: "number" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Code", value: "code" },
+              { title: "Underline", value: "underline" },
+              { title: "Strike", value: "strike-through" },
+            ],
+            annotations: [
+              {
+                title: "URL",
+                name: "link",
+                type: "object",
+                fields: [
+                  {
+                    title: "URL",
+                    name: "href",
+                    type: "url",
+                  },
+                  {
+                    title: "Open in new tab",
+                    name: "blank",
+                    type: "boolean",
+                  },
+                ],
+              },
+            ],
+          },
+        },
         {
           type: "image",
           options: {
@@ -63,28 +117,22 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "coverImage",
-      title: "Cover Image",
-      description:
-        "This image will be used as the cover image for the blog post. If you choose to add it, this is the image displayed in the list within the homepage.",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: "date",
-      title: "Date",
-      description: "This is the date of your post.",
-      type: "datetime",
-      options: { dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss" },
-      initialValue: () => new Date().toISOString(),
+      name: "related",
+      title: "Related Post",
+      description: "This field is the related post of your this post.",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "post" }],
+        },
+      ],
     }),
   ],
   preview: {
     select: {
       title: "title",
-      date: "date",
+      date: "_createdAt",
       media: "coverImage",
     },
     prepare({ title, media, date }) {

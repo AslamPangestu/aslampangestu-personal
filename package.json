@@ -10,9 +10,9 @@
     "lint": "eslint . --ext .astro,.js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.6.3",
     "@astrojs/react": "^4.3.1",
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^8.2.7",
     "@fontsource-variable/geist": "^5.2.8",
     "@iconify-json/devicon-plain": "^1.2.50",
     "@iconify-json/lucide": "^1.2.82",
@@ -45,6 +45,7 @@
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.36.0",
     "@portabletext/types": "^2.0.15",
     "@sanity/types": "^4.9.0",

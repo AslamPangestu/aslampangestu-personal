@@ -2,11 +2,12 @@
 import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import sanity from "@sanity/astro";
 import icon from "astro-icon";
+
+import netlify from "@astrojs/netlify";
 
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV,
@@ -16,19 +17,19 @@ const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://aslampangestu.vercel.app/",
+  site: "https://aslampangestu.netlify.app/",
   output: "server",
-  adapter: vercel({ imageService: true, devImageService: "sharp", isr: true }),
+  adapter: netlify(),
   vite: {
     plugins: [tailwindcss()],
   },
   image: {
-    domains: ["media.licdn.com"],
+    domains: ["media.licdn.com", "cdn.sanity.io"],
     remotePatterns: [{ protocol: "https" }],
   },
   integrations: [
     sitemap({
-      filter: (page) => page !== "https://aslampangestu.vercel.app/dashboard",
+      filter: (page) => page !== "https://aslampangestu.netlify.app/dashboard",
     }),
     sanity({
       projectId: PUBLIC_SANITY_PROJECT_ID,

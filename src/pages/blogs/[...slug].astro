@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { format } from "date-fns/format";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
 import { GetContacts } from "@/entities/contact/model/queries";
@@ -52,7 +53,9 @@ const relatedBlog = post.related || [];
       </h1>
       <div class="flex flex-col">
         <span class="text-on-surface-secondary text-sm dark:text-white"
-          >Publish At: {format(post._createdAt, "dd MMMM yyyy, HH:mm")}</span
+          >Publish At: {
+            format(parseISO(post._createdAt), "dd MMMM yyyy, HH:mm")
+          }</span
         >
         <span class="text-on-surface-secondary text-sm dark:text-white"
           >Tags</span

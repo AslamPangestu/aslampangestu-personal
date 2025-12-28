@@ -35,7 +35,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-is": "^19.1.1",
-    "sanity": "4.8.1",
+    "sanity": "4.22.0",
     "sanity-plugin-asset-source-unsplash": "^4.0.1",
     "sanity-plugin-iconify": "^2.1.0",
     "sharp": "^0.34.4",
@@ -60,7 +60,18 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "typescript": "^5.9.3",
-    "vite": "6.3.5"
+    "vite": "^6.4.1"
+  },
+  "overrides": {
+    "@tailwindcss/vite": {
+      "vite": "^6.4.1"
+    },
+    "astro": {
+      "vite": "^6.4.1"
+    },
+    "@astrojs/react": {
+      "vite": "^6.4.1"
+    }
   },
   "packageManager": "yarn@4.9.1"
 }

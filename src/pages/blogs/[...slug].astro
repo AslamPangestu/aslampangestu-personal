@@ -1,8 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import format from "date-fns/format";
-import parseISO from "date-fns/parseISO";
+import { format, parseISO } from "date-fns";
 
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
 import { GetContacts } from "@/entities/contact/model/queries";

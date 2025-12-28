@@ -1,5 +1,6 @@
 ---
 import type { BlockContent } from "@/entities/blockContent/model/type";
+import type { CallToAction } from "@/entities/callToAction/model/type";
 import { GetContacts } from "@/entities/contact/model/queries";
 import { GetPage } from "@/entities/page/model/queries";
 import { GetSkills } from "@/entities/skill/model/queries";
@@ -20,6 +21,7 @@ const hero = page.content[0] as BlockContent;
 const aboutMe = page.content[1] as BlockContent;
 const portofolio = page.content[2] as BlockContent;
 const blog = page.content[3] as BlockContent;
+const cta = page.content[4] as CallToAction;
 ---
 
 <MainLayout
@@ -32,5 +34,5 @@ const blog = page.content[3] as BlockContent;
   <AboutMe data={aboutMe} contacts={contacts} />
   <Portofolio data={portofolio} />
   <Blog data={blog} />
-  <ClickToAction data={page.content[4]} />
+  <ClickToAction data={cta} />
 </MainLayout>

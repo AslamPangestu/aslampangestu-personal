@@ -28,7 +28,7 @@ const content = data.content?.[0];
   >
     <div class="flex flex-col items-start text-center md:items-center">
       <div class="mb-6">
-        <Image src="/images/logo.svg" alt="Logo" width={116} />
+        <Image src="/images/logo.svg" alt="Logo" width={116} height={72} />
       </div>
       <span
         class="text-on-surface dark:text-surface mb-2 text-base font-bold md:text-xl"
@@ -65,7 +65,7 @@ const content = data.content?.[0];
       >Follow Me</span
     >
     <div class="flex flex-row gap-12">
-      {contacts.map((contact) => <ContactIcon {...contact} />)}
+      {contacts.map((contact: Contact) => <ContactIcon {...contact} />)}
     </div>
   </div>
 

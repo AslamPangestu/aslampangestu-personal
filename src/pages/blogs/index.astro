@@ -1,6 +1,8 @@
 ---
 import type { BlockContent } from "@/entities/blockContent/model/type";
 import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
+import type { CallToAction } from "@/entities/callToAction/model/type";
+
 import { GetContacts } from "@/entities/contact/model/queries";
 import { GetPage } from "@/entities/page/model/queries";
 
@@ -18,6 +20,7 @@ const blogs = await GetBlogsWithLimit({ limit: 6 });
 const hero = page.content[0] as BlockContent;
 const highlight = page.content[1] as BlockContent;
 const main = page.content[2] as BlockContent;
+const cta = page.content[3] as CallToAction;
 ---
 
 <MainLayout
@@ -30,5 +33,5 @@ const main = page.content[2] as BlockContent;
   <!-- TODO: Top Blog List -->
   <Highlight data={highlight} latestBlogs={blogs.slice(0, 2)} />
   <Main data={main} blogs={blogs} />
-  <ClickToAction data={page.content[3]} />
+  <ClickToAction data={cta} />
 </MainLayout>

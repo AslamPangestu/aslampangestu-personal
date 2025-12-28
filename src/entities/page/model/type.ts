@@ -1,4 +1,3 @@
-
 import type { BaseModel } from "@/shared/types/sanity";
 
 import type { BlockContent } from "@/entities/blockContent/model/type";

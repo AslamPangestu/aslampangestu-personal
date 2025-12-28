@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import cn from "@/shared/lib/cn";
 
 interface Props {
@@ -20,6 +22,10 @@ const {
   rounded,
   color = "primary",
 } = Astro.props;
+
+const hasTitle = Astro.slots.has("title");
+
+console.log(icon);
 ---
 
 {
@@ -30,7 +36,11 @@ const {
       href={href}
     >
       <div class={cn(rounded && "rounded-full")}>{label}</div>
-      {icon ? <div class={cn(rounded && "rounded-full")}>{icon}</div> : null}
+      {icon ? (
+        <div class={cn(rounded && "rounded-full")}>
+          <Icon name={icon} class="h-6 w-6" />
+        </div>
+      ) : null}
     </a>
   ) : (
     <button
@@ -38,7 +48,11 @@ const {
       class={cn("button-container", rounded && "rounded-full")}
     >
       <div class={cn(rounded && "rounded-full")}>{label}</div>
-      {icon ? <div class={cn(rounded && "rounded-full")}>{icon}</div> : null}
+      {icon ? (
+        <div class={cn(rounded && "rounded-full")}>
+          <Icon name={icon} class="h-6 w-6" />
+        </div>
+      ) : null}
     </button>
   )
 }

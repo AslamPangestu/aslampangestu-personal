@@ -1,14 +1,16 @@
 ---
 import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { Project } from "@/entities/project/model/type";
+import type { Role } from "@/entities/role/model/type";
 import ProjectItem from "@/entities/project/ui/ProjectItem.astro";
 
 interface Props {
   data: BlockContent;
   projects: Project[];
+  roles: Role[];
 }
 
-const { data, projects } = Astro.props;
+const { data, projects, roles } = Astro.props;
 
 const title = data.content?.[0].value;
 const description = data.content?.[1].value;
@@ -30,12 +32,11 @@ const description = data.content?.[1].value;
         {description}
       </p>
     </div>
-    <!-- TODO: Implement Filter -->
     <div
       class="flex w-full flex-row justify-start gap-5 lg:basis-1/2 lg:justify-end"
     >
-      <span>Filter 1</span>
-      <span>Filter 2</span>
+      <!-- TODO: Implement Filter -->
+      {roles.map((role) => <span>{role.title}</span>)}
     </div>
   </div>
   <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">

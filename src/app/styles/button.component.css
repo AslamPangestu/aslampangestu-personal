@@ -8,7 +8,7 @@
 }
 
 .button-container>div:last-child {
-    @apply h-12 w-12 content-center;
+    @apply h-12 w-12 content-center justify-items-center;
 }
 
 /* Color */

@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+
+import DecorativeIcon from "@/shared/assets/line.svg";
 import Button from "@/shared/ui/Button/index.astro";
 
 interface Action {
@@ -26,8 +29,7 @@ const { title, subtitle, description, action } = Astro.props;
           class="text-on-surface-secondary dark:text-surface text-base font-light md:text-2xl"
           >{subtitle}</span
         >
-        <!-- TODO: Add Line -->
-        <span>Icon</span>
+        <Image src={DecorativeIcon} alt={`${subtitle} decorative`} />
       </div>
       <h2
         class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-5xl"
@@ -42,12 +44,12 @@ const { title, subtitle, description, action } = Astro.props;
     </p>
   </div>
   <slot />
-  <!-- TODO: Arrow Icon -->
   <Button
+    type="link"
     label={action.label}
     href={action.href}
     rounded
     color="primary"
-    icon="A"
+    icon="lucide:arrow-up-right"
   />
 </section>

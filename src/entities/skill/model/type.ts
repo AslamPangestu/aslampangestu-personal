@@ -1,17 +1,10 @@
-import type { BaseModel } from "@/shared/types/sanity";
+import type { BaseModel, Icon } from "@/shared/types/sanity";
 
-interface SanityIcon {
-  name: string;
-}
-
-interface RoleReference {
-  _type: "reference";
-  _ref: string;
-}
+import type { Role } from "@/entities/role/model/type";
 
 export interface Skill extends BaseModel {
   _type: "skill";
-  icon: SanityIcon;
+  icon: Icon;
   name: string;
-  role?: RoleReference;
+  role?: Role;
 }

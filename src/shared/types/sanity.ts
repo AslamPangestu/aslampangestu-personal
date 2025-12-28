@@ -1,5 +1,9 @@
 import type { SanityAsset } from "@sanity/image-url/lib/types/types";
 
+export interface Icon {
+  name: string;
+}
+
 export interface ImageBlock extends SanityAsset {
   caption?: string;
   alt?: string;

@@ -3,11 +3,10 @@ import { Image } from "astro:assets";
 
 import { GetBlockContent } from "@/entities/blockContent/model/queries";
 import type { Contact } from "@/entities/contact/model/type";
+import ContactIcon from "@/entities/contact/ui/ContactIcon.astro";
 import type { CallToAction } from "@/entities/callToAction/model/type";
 
 import Button from "@/shared/ui/Button/index.astro";
-
-import ContactIcon from "@/widgets/ContactIcon.astro";
 
 interface Props {
   contacts: Contact[];
@@ -51,7 +50,13 @@ const content = data.content?.[0];
       class="text-on-surface-secondary dark:text-surface mb-8 text-sm md:text-lg"
       >{cta?.description}</span
     >
-    <Button label={cta?.ctaText} rounded color="primary" icon="A" />
+    <!-- TODO: On Click -->
+    <Button
+      label={cta?.ctaText}
+      rounded
+      color="primary"
+      icon="lucide:arrow-up-right"
+    />
   </div>
 
   <div class="order-3 flex flex-col gap-4 md:order-2 lg:order-3">

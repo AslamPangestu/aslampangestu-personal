@@ -20,7 +20,13 @@ const { data } = Astro.props;
       >
         {data.title}
       </h2>
-      <Button label={data.ctaText} rounded color="white" icon="A" />
+      <!-- TODO: On Click -->
+      <Button
+        label={data.ctaText}
+        rounded
+        color="white"
+        icon="lucide:arrow-up-right"
+      />
     </div>
   </div>
 </section>

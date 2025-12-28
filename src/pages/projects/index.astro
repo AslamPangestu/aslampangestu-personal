@@ -2,8 +2,9 @@
 import type { BlockContent } from "@/entities/blockContent/model/type";
 import { GetContacts } from "@/entities/contact/model/queries";
 import { GetPage } from "@/entities/page/model/queries";
-import { GetProjectsWithLimit } from "@/entities/project/model/queries";
+import { GetRoleWithSkills } from "@/entities/role/model/queries";
 
+import { GetProjects } from "@/features/Project/model/queries";
 import TechStack from "@/features/Project/ui/TechStack.astro";
 import Main from "@/features/Project/ui/Main.astro";
 
@@ -13,7 +14,8 @@ import ClickToAction from "@/widgets/ClickToAction.astro";
 
 const page = await GetPage({ name: "project" });
 const contacts = await GetContacts();
-const projects = await GetProjectsWithLimit({ limit: 4 });
+const roles = await GetRoleWithSkills();
+const projects = await GetProjects();
 
 const hero = page.content[0] as BlockContent;
 const stack = page.content[1] as BlockContent;
@@ -27,7 +29,7 @@ const main = page.content[2] as BlockContent;
   contacts={contacts}
 >
   <Intro data={hero} />
-  <TechStack data={stack} />
-  <Main data={main} projects={projects} />
+  <TechStack data={stack} roles={roles} />
+  <Main data={main} projects={projects} roles={roles} />
   <ClickToAction data={page.content[3]} />
 </MainLayout>

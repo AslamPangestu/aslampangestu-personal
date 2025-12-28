@@ -1,12 +1,8 @@
-import type { BaseModel } from "@/shared/types/sanity";
-
-interface SanityIcon {
-  name: string;
-}
+import type { BaseModel, Icon } from "@/shared/types/sanity";
 
 export interface Contact extends BaseModel {
   _type: "contact";
-  icon: SanityIcon;
+  icon: Icon;
   name: string;
   value: string;
 }

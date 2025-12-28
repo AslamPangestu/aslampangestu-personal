@@ -1,9 +1,11 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { Skill } from "@/entities/skill/model/type";
+import SkillIcon from "@/entities/skill/ui/SkillIcon.astro";
 
+import DecorativeIcon from "@/shared/assets/circle_star.svg";
 import Button from "@/shared/ui/Button/index.astro";
 
 interface Props {
@@ -19,30 +21,42 @@ const subtitle2 = data.content?.[2].value;
 const action = data.content?.[3].value || "";
 ---
 
-<section class="flex h-screen flex-col justify-between">
+<section class="flex h-screen max-h-[1000px] flex-col justify-between">
   <div
-    class="container mx-auto flex w-full grow flex-col justify-center px-6 md:px-8"
+    class="container mx-auto flex min-h-[600px] w-full grow flex-col justify-center px-6 md:px-8"
   >
     <div>
       <div class="mb-16 flex flex-col gap-2.5">
         <span
-          class="text-on-surface dark:text-surface text-sm uppercase md:text-2xl"
+          class="text-on-surface dark:text-surface text-sm uppercase md:text-lg lg:text-2xl"
           >{title}
         </span>
         <h1
-          class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-7xl"
+          class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-4xl lg:text-7xl"
         >
           {subtitle}
         </h1>
-        <!-- TODO: Decorative Icon -->
-        <h1
-          class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-7xl"
-        >
-          {subtitle2}
-        </h1>
+        <div>
+          <Image
+            src={DecorativeIcon}
+            alt="hero decorative"
+            class="float-left mt-1 mr-2 w-6 md:mt-1.5 md:w-7 lg:mt-2 lg:mr-6 lg:w-14"
+          />
+          <h1
+            class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-4xl lg:text-7xl"
+          >
+            {subtitle2}
+          </h1>
+        </div>
       </div>
-      <!-- TODO: Arrow Icon -->
-      <Button label={action} rounded color="primary" icon="A" />
+      <!-- TODO: Rotate Arrow -->
+      <!-- TODO: On Click -->
+      <Button
+        label={action}
+        rounded
+        color="primary"
+        icon="lucide:arrow-up-right"
+      />
     </div>
   </div>
   <div class="bg-primary w-full py-8">
@@ -52,18 +66,12 @@ const action = data.content?.[3].value || "";
       >
         {
           skills.map((skill) => (
-            <div class="mx-6 flex flex-row items-center gap-5">
-              <Icon name={skill.icon.name} class="text-4xl text-white" />
-              <span class="text-2xl font-bold text-white">{skill.name}</span>
-            </div>
+            <SkillIcon skill={skill} containerClassName="mx-6" />
           ))
         }
         {
           skills.map((skill) => (
-            <div class="mx-6 flex flex-row items-center gap-5">
-              <Icon name={skill.icon.name} class="text-4xl text-white" />
-              <span class="text-2xl font-bold text-white">{skill.name}</span>
-            </div>
+            <SkillIcon skill={skill} containerClassName="mx-6" />
           ))
         }
       </div>

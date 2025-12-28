@@ -11,6 +11,7 @@ const { coverImage, title, projectDescription, skill } = Astro.props;
 const imageUrl = coverImage ? getImageUrl(coverImage).url() : "";
 ---
 
+<!-- TODO: On Click -->
 <div class="group relative aspect-[4/3] overflow-hidden rounded-4xl">
   {
     imageUrl && (
@@ -30,7 +31,7 @@ const imageUrl = coverImage ? getImageUrl(coverImage).url() : "";
     <div
       class="translate-y-[45%] rounded-4xl bg-black/80 px-8 py-9 text-white transition-transform duration-500 group-hover:translate-y-0"
     >
-      <h4 class="mb-2.5 text-3xl font-extrabold">{title}</h4>
+      <h4 class="mb-2.5 text-3xl font-black">{title}</h4>
       <span class="text-lg font-extralight"
         >Stack: {skill?.map((item) => item.name).join(", ")}</span
       >

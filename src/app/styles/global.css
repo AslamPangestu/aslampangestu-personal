@@ -18,6 +18,9 @@
   /* Inverse Color */
   --color-inverse-primary-container: rgba(18, 18, 18, 0.45);
   --color-inverse-surface: #101010;
+
+  /* Animation */
+  --animation-marquee: marquee 20s linear infinite;
 }
 
 body {
@@ -26,4 +29,13 @@ body {
 
 @layer components {
   @import "./button.component.css";
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

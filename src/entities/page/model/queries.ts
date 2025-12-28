@@ -4,7 +4,7 @@ import type { Page } from "./type";
 
 export const GetPage = ({ name }: { name: string }): Promise<Page> => {
   return sanityClient.fetch(
-    '*[_type == "page" && name == $name][0]{..., content[]->{...}}',
+    '*[_type == "page" && name == $name][0]{..., content[]->{ ..., collection[]->{..., skill[]->{...} } }}',
     { name },
   );
 };

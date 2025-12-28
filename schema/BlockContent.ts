@@ -30,7 +30,7 @@ export default defineType({
       of: [
         {
           type: "reference",
-          to: [{ type: "project" }, { type: "post" }],
+          to: [{ type: "project" }, { type: "post" }, { type: "callToAction" }],
         },
       ],
     }),

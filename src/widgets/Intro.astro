@@ -1,9 +1,14 @@
 ---
-import type { BlockContent } from "@/entities/page/model/type";
+import type { BlockContent } from "@/entities/blockContent/model/type";
 
-type Props = BlockContent;
+interface Props {
+  data: BlockContent;
+}
 
-const { title, description } = Astro.props;
+const { data } = Astro.props;
+
+const title = data.content?.[0].value;
+const description = data.content?.[1].value;
 ---
 
 <section

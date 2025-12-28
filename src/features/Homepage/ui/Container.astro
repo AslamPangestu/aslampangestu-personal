@@ -1,6 +1,4 @@
 ---
-import type { BlockContent } from "@/entities/page/model/type";
-
 import Button from "@/shared/ui/Button/index.astro";
 
 interface Action {
@@ -8,9 +6,10 @@ interface Action {
   href: string;
 }
 
-type BaseProps = Pick<BlockContent, "title" | "subtitle" | "description">;
-
-interface Props extends BaseProps {
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
   action: Action;
 }
 
@@ -27,6 +26,7 @@ const { title, subtitle, description, action } = Astro.props;
           class="text-on-surface-secondary dark:text-surface text-base font-light md:text-2xl"
           >{subtitle}</span
         >
+        <!-- TODO: Add Line -->
         <span>Icon</span>
       </div>
       <h2
@@ -42,6 +42,7 @@ const { title, subtitle, description, action } = Astro.props;
     </p>
   </div>
   <slot />
+  <!-- TODO: Arrow Icon -->
   <Button
     label={action.label}
     href={action.href}

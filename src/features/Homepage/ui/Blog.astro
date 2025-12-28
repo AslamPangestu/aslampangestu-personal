@@ -1,28 +1,50 @@
 ---
+import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { BaseBlog } from "@/entities/blog/model/type";
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
 
 import cn from "@/shared/lib/cn";
 
+import Container from "./Container.astro";
+
 interface Props {
-  data: BaseBlog[];
+  data: BlockContent;
 }
 
 const { data } = Astro.props;
+
+const title = data.content?.[0].value || "";
+const subtitle = data.content?.[1].value || "";
+const description = data.content?.[2].value || "";
+const action = data.content?.[3].value || "";
+
+const collections = data.collection as BaseBlog[];
 ---
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-[1fr_450px]">
-  {
-    data.map((item, index) => (
-      <BlogItem
-        containerClass={cn(
-          "last:flex last:md:hidden last:lg:flex",
-          index === 0
-            ? "lg:col-start-1 lg:row-span-4 lg:[&>*:first-child]:h-[75%] xl:[&>*:first-child]:h-auto"
-            : "lg:flex-row lg:items-center lg:col-start-2 lg:[&>*:first-child]:w-[180px]",
-        )}
-        {...item}
-      />
-    ))
-  }
-</div>
+<Container
+  title={title}
+  subtitle={subtitle}
+  description={description}
+  action={{ label: action, href: "/blogs" }}
+>
+  <!-- TODO: Implement filter -->
+  <div class="flex w-full flex-row gap-5">
+    <span>Filter 1</span>
+    <span>Filter 2</span>
+  </div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-[1fr_450px]">
+    {
+      collections.map((item, index) => (
+        <BlogItem
+          containerClass={cn(
+            "last:flex last:md:hidden last:lg:flex",
+            index === 0
+              ? "lg:col-start-1 lg:row-span-4 lg:[&>*:first-child]:h-[75%] xl:[&>*:first-child]:h-auto"
+              : "lg:flex-row lg:items-center lg:col-start-2 lg:[&>*:first-child]:w-[180px]"
+          )}
+          {...item}
+        />
+      ))
+    }
+  </div>
+</Container>

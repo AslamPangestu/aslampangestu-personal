@@ -1,12 +1,17 @@
 ---
+import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { BaseBlog } from "@/entities/blog/model/type";
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
 
 interface Props {
-  data: BaseBlog[];
+  data: BlockContent;
+  blogs: BaseBlog[];
 }
 
-const { data } = Astro.props;
+const { data, blogs } = Astro.props;
+
+const title = data.content?.[0].value;
+const description = data.content?.[1].value;
 ---
 
 <section
@@ -16,22 +21,23 @@ const { data } = Astro.props;
     <h2
       class="text-on-surface dark:text-surface text-2xl font-black uppercase md:basis-1/2 md:text-4xl"
     >
-      Lessons from the Codebase
+      {title}
     </h2>
     <p
       class="text-on-surface-secondary dark:text-surface max-w-5xl text-sm md:basis-1/2 md:text-xl"
     >
-      Every line of code has a story. This is my space to share the journey,
-      mistakes, and successes of building a real digital product.
+      {description}
     </p>
   </div>
+  <!-- TODO: Implement Filter -->
   <div class="flex w-full flex-row gap-5">
     <span>Filter 1</span>
     <span>Filter 2</span>
   </div>
   <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-    {data.map((item) => <BlogItem {...item} />)}
+    {blogs.map((item) => <BlogItem {...item} />)}
   </div>
+  <!-- TODO: Implement Pagination -->
   <div class="flex flex-row justify-around">
     <div>Next</div>
     <div>Pages</div>

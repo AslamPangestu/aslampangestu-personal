@@ -1,12 +1,17 @@
 ---
+import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { Project } from "@/entities/project/model/type";
 import ProjectItem from "@/entities/project/ui/ProjectItem.astro";
 
 interface Props {
-  data: Project[];
+  data: BlockContent;
+  projects: Project[];
 }
 
-const { data } = Astro.props;
+const { data, projects } = Astro.props;
+
+const title = data.content?.[0].value;
+const description = data.content?.[1].value;
 ---
 
 <section
@@ -17,16 +22,15 @@ const { data } = Astro.props;
       <h2
         class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-4xl"
       >
-        MY Portofolio
+        {title}
       </h2>
       <p
         class="text-on-surface-secondary dark:text-surface max-w-5xl text-sm md:text-xl"
       >
-        I’ve worked on various full-stack projects ranging from custom
-        dashboards, real-time chat applications, RESTful APIs, to scalable
-        backend systems.
+        {description}
       </p>
     </div>
+    <!-- TODO: Implement Filter -->
     <div
       class="flex w-full flex-row justify-start gap-5 lg:basis-1/2 lg:justify-end"
     >
@@ -35,6 +39,6 @@ const { data } = Astro.props;
     </div>
   </div>
   <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
-    {data.map((project) => <ProjectItem {...project} />)}
+    {projects.map((project) => <ProjectItem {...project} />)}
   </div>
 </section>

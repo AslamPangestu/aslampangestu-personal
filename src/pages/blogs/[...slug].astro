@@ -1,9 +1,13 @@
 ---
-import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
+import { Image } from "astro:assets";
+
 import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+import { GetContacts } from "@/entities/contact/model/queries";
+import { GetCallToAction } from "@/entities/callToAction/model/queries";
 
 import { GetBlogBySlug } from "@/features/Blog/model/queries";
 
+import { getImageUrl } from "@/shared/lib/sanity-image-url";
 import PortableText from "@/shared/ui/PortableText/index.astro";
 
 import MainLayout from "@/widgets/MainLayout/index.astro";
@@ -14,18 +18,24 @@ const { slug } = Astro.params;
 if (!slug) {
   return Astro.redirect("/blogs");
 }
+const contacts = await GetContacts();
+const cta = await GetCallToAction({ name: "global" });
 const post = await GetBlogBySlug({ slug });
-const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
+
+const imageUrl = post.coverImage ? getImageUrl(post.coverImage).url() : "";
+const relatedBlog = post.related || [];
 ---
 
 <MainLayout
   title={post.title}
   keyword={post.keyword}
   description={post.description}
+  contacts={contacts}
 >
   <section
     class="container mx-auto mt-32 flex w-full flex-col gap-8 px-6 md:px-8"
   >
+    <!-- TODO: Arrow Icon -->
     <a href="/blogs">Back to Blog</a>
     <div class="flex flex-col gap-2">
       <h1
@@ -35,15 +45,24 @@ const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
       </h1>
       <div class="flex flex-col">
         <span class="text-on-surface-secondary text-sm"
-          >Publish At: {post.date}</span
+          >Publish At: {post._createdAt}</span
         >
         <span class="text-on-surface-secondary text-sm">Tags</span>
       </div>
     </div>
-    <div>Header Image</div>
+    {
+      imageUrl && (
+        <Image
+          src={imageUrl}
+          alt={post.title}
+          inferSize
+          class="aspect-video h-full w-full rounded-2xl object-cover"
+        />
+      )
+    }
   </section>
   <section
-    class="container mx-auto mb-12 grid w-full grid-cols-1 px-6 md:grid-cols-3 md:px-8"
+    class="container mx-auto mt-12 mb-12 grid w-full grid-cols-1 px-6 md:grid-cols-3 md:px-8"
   >
     <div
       class="dark:text-surface text-on-surface-secondary col-span-2 row-span-2"
@@ -51,8 +70,8 @@ const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
       <PortableText value={post.content} />
     </div>
     <div class="flex flex-col gap-6">
-      {latestBlogs.map((blog) => <BlogItem {...blog} />)}
+      {relatedBlog.map((blog) => <BlogItem {...blog} />)}
     </div>
   </section>
-  <ClickToAction />
+  <ClickToAction data={cta} />
 </MainLayout>

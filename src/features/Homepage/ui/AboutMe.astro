@@ -1,9 +1,19 @@
 ---
-import type { BlockContent } from "@/entities/page/model/type";
+import type { BlockContent } from "@/entities/blockContent/model/type";
+import type { Contact } from "@/entities/contact/model/type";
 
-type Props = BlockContent;
+import ContactIcon from "@/widgets/ContactIcon.astro";
 
-const { title, subtitle, description } = Astro.props;
+interface Props {
+  data: BlockContent;
+  contacts: Contact[];
+}
+
+const { data, contacts } = Astro.props;
+
+const title = data.content?.[0].value;
+const subtitle = data.content?.[1].value;
+const description = data.content?.[2].value;
 ---
 
 <section
@@ -16,6 +26,7 @@ const { title, subtitle, description } = Astro.props;
           class="text-on-surface-secondary dark:text-surface text-base font-light md:text-2xl"
           >{subtitle}</span
         >
+        <!-- TODO: implement Line -->
         <span>Icon</span>
       </div>
       <h2
@@ -27,17 +38,21 @@ const { title, subtitle, description } = Astro.props;
         {description}
       </p>
     </div>
-    <div class="flex flex-col gap-4">
+    <div class="mt-12 flex flex-col gap-4">
       <span class="text-on-surface dark:text-surface text-xl font-medium"
         >Let’s connect:</span
       >
-      <div class="flex flex-row gap-2">
-        <span>Icon</span>
-        <span>Icon</span>
-        <span>Icon</span>
-        <span>Icon</span>
+      <div class="flex flex-row">
+        {
+          contacts.map((contact) => (
+            <div class="border-on-surface-secondary dark:border-surface border-r px-6 first:pl-0 last:border-r-0 last:pr-0">
+              <ContactIcon {...contact} />
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
+  <!-- TODO: Implement Image -->
   <div class="order-1 md:order-2 md:basis-1/2">Image</div>
 </section>

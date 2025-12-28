@@ -1,7 +1,24 @@
 ---
 import { Image } from "astro:assets";
 
+import { GetBlockContent } from "@/entities/blockContent/model/queries";
+import type { Contact } from "@/entities/contact/model/type";
+import type { CallToAction } from "@/entities/callToAction/model/type";
+
 import Button from "@/shared/ui/Button/index.astro";
+
+import ContactIcon from "@/widgets/ContactIcon.astro";
+
+interface Props {
+  contacts: Contact[];
+}
+
+const { contacts } = Astro.props;
+
+const data = await GetBlockContent({ name: "footer" });
+
+const cta = data.collection?.[0] as CallToAction;
+const content = data.content?.[0];
 ---
 
 <footer
@@ -16,11 +33,11 @@ import Button from "@/shared/ui/Button/index.astro";
       </div>
       <span
         class="text-on-surface dark:text-surface mb-2 text-base font-bold md:text-xl"
-        >Muhammad Asslam Pangestu Idham</span
+        >Muhammad Aslam Pangestu Idham</span
       >
       <span
         class="text-on-surface-secondary dark:text-surface text-sm md:text-lg"
-        >Building scalable, human-centered digital solutions.</span
+        >{content?.value}</span
       >
     </div>
   </div>
@@ -28,13 +45,13 @@ import Button from "@/shared/ui/Button/index.astro";
   <div class="order-2 flex flex-col md:order-1">
     <span
       class="text-on-surface dark:text-surface mb-4 text-base font-bold md:text-xl"
-      >Let’s Work Together</span
+      >{cta?.title}</span
     >
     <span
       class="text-on-surface-secondary dark:text-surface mb-8 text-sm md:text-lg"
-      >Have something in mind? Let’s chat.</span
+      >{cta?.description}</span
     >
-    <Button label="Contact Me" rounded color="primary" icon="A" />
+    <Button label={cta?.ctaText} rounded color="primary" icon="A" />
   </div>
 
   <div class="order-3 flex flex-col gap-4 md:order-2 lg:order-3">
@@ -42,17 +59,14 @@ import Button from "@/shared/ui/Button/index.astro";
       class="text-on-surface dark:text-surface text-base font-bold md:text-xl"
       >Follow Me</span
     >
-    <div class="flex flex-row gap-2">
-      <span>Icon</span>
-      <span>Icon</span>
-      <span>Icon</span>
-      <span>Icon</span>
+    <div class="flex flex-row gap-12">
+      {contacts.map((contact) => <ContactIcon {...contact} />)}
     </div>
   </div>
 
   <div
     class="text-on-surface-secondary dark:text-surface order-4 p-8 text-center text-sm md:col-span-2 md:text-lg lg:col-span-4"
   >
-    © 2025 Muhammad Asslam Pangestu Idham. All rights reserved.
+    © 2026 Muhammad Aslam Pangestu Idham. All rights reserved.
   </div>
 </footer>

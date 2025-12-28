@@ -8,7 +8,7 @@ export const GetProjectsWithLimit = ({
   limit: number;
 }): Promise<Project[]> => {
   return sanityClient.fetch(
-    '*[_type == "project"] | order(_createdAt desc) [0...$limit]{...}',
+    '*[_type == "project"] | order(_createdAt desc) [0...$limit]{ ..., skill[]-> }',
     { limit },
   );
 };

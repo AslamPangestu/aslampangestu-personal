@@ -1,18 +1,36 @@
 ---
+import type { BlockContent } from "@/entities/blockContent/model/type";
 import type { Project } from "@/entities/project/model/type";
 import ProjectItem from "@/entities/project/ui/ProjectItem.astro";
 
+import Container from "./Container.astro";
+
 interface Props {
-  data: Project[];
+  data: BlockContent;
 }
 
 const { data } = Astro.props;
+
+const title = data.content?.[0].value || "";
+const subtitle = data.content?.[1].value || "";
+const description = data.content?.[2].value || "";
+const action = data.content?.[3].value || "";
+
+const collections = data.collection as Project[];
 ---
 
-<div class="flex w-full flex-row gap-5">
-  <span>Filter 1</span>
-  <span>Filter 2</span>
-</div>
-<div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
-  {data.map((item) => <ProjectItem {...item} />)}
-</div>
+<Container
+  title={title}
+  subtitle={subtitle}
+  description={description}
+  action={{ label: action, href: "/projects" }}
+>
+  <!-- TODO: Implement filter -->
+  <div class="flex w-full flex-row gap-5">
+    <span>Filter 1</span>
+    <span>Filter 2</span>
+  </div>
+  <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
+    {collections.map((item) => <ProjectItem {...item} />)}
+  </div>
+</Container>

@@ -1,9 +1,10 @@
 ---
-// TODO: Refactor on Load Font
 import "@fontsource-variable/geist";
 import geistWoff2 from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
 
 import "@/app/styles/global.css";
+
+import type { Contact } from "@/entities/contact/model/type";
 
 import cn from "@/shared/lib/cn";
 
@@ -15,9 +16,10 @@ interface Props {
   keyword: string;
   description: string;
   containerClass?: string;
+  contacts: Contact[];
 }
 
-const { title, keyword, description, containerClass } = Astro.props;
+const { title, keyword, description, containerClass, contacts } = Astro.props;
 ---
 
 <!doctype html>
@@ -63,11 +65,12 @@ const { title, keyword, description, containerClass } = Astro.props;
       window.__THEME__ = currentTheme;
     </script>
   </head>
+  <!-- TODO: Background Image -->
   <body>
     <Header />
     <main class={cn("grow", containerClass)}>
       <slot />
     </main>
-    <Footer />
+    <Footer contacts={contacts} />
   </body>
 </html>

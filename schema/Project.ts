@@ -41,8 +41,8 @@ export default defineType({
       name: "skill",
       title: "Skill",
       description: "This field is the skill of your project.",
-      type: "reference",
-      to: [{ type: "skill" }],
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "skill" }] }],
     }),
     defineField({
       name: "projectDescription",
@@ -57,4 +57,16 @@ export default defineType({
       type: "url",
     }),
   ],
+  // preview: {
+  //   select: {
+  //     title: "title",
+  //     coverImage: "coverImage",
+  //     skill: "skill",
+  //   },
+  //   prepare({ title, coverImage, skill }) {
+  //     const skills =
+  //       skill?.length > 0 ? skill.map((skill: any) => skill.current.name).join(", ") : "";
+  //     return { title, media: coverImage, subtitle: skills };
+  //   },
+  // },
 });

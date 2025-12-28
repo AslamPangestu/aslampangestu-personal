@@ -1,5 +1,7 @@
 import { sanityClient } from "sanity:client";
 
+import type { Blog } from "@/entities/blog/model/type";
+
 export const GetPaginatedBlogs = ({
   page = 1,
   pageSize = 10,
@@ -29,9 +31,9 @@ export const GetPaginatedBlogs = ({
   );
 };
 
-export const GetBlogBySlug = ({ slug }: { slug: string }) => {
+export const GetBlogBySlug = ({ slug }: { slug: string }): Promise<Blog> => {
   return sanityClient.fetch(
-    '*[_type == "post" && slug.current == $slug][0]{...}',
+    '*[_type == "post" && slug.current == $slug][0]{..., related[]->{...}, tags[]->{...}}',
     { slug },
   );
 };

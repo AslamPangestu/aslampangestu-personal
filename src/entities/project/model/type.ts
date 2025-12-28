@@ -1,22 +1,12 @@
 import type { SanityAsset } from "@sanity/image-url/lib/types/types";
 
-import type {
-  ImageBlock,
-  PortableTextBlock,
-  BaseModel,
-} from "@/shared/types/sanity";
+import type { Skill } from "@/entities/skill/model/type";
+import type { BaseModel } from "@/shared/types/sanity";
 
 interface Duration {
   start?: string;
   end?: string;
 }
-
-interface SkillReference {
-  _type: "reference";
-  _ref: string;
-}
-
-type ProjectDescriptionItem = PortableTextBlock | ImageBlock;
 
 export interface Project extends BaseModel {
   _type: "project";
@@ -24,8 +14,8 @@ export interface Project extends BaseModel {
   coverImage: SanityAsset;
   duration?: Duration;
   client?: string;
-  skill?: SkillReference;
-  projectDescription?: ProjectDescriptionItem[];
+  skill?: Skill[];
+  projectDescription?: string;
   site?: string;
   slug?: {
     _type: "slug";

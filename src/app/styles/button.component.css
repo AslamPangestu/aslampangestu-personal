@@ -1,3 +1,4 @@
+/* TODO: Animated to make full bg color from left to right */
 .button-container {
     @apply cursor-pointer flex flex-row max-w-fit transition-all duration-200 ease-in-out rounded-lg overflow-hidden;
 }

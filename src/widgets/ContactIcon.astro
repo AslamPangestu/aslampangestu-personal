@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Contact } from "@/entities/contact/model/type";
+
+type Props = Contact;
+
+const { value, icon } = Astro.props;
+---
+
+<a
+  href={value}
+  class="text-on-surface dark:text-surface hover:text-primary text-3xl transition-all duration-300 ease-in-out"
+>
+  <Icon name={icon.name} />
+</a>

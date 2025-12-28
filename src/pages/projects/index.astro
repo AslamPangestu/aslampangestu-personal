@@ -1,27 +1,33 @@
 ---
+import type { BlockContent } from "@/entities/blockContent/model/type";
+import { GetContacts } from "@/entities/contact/model/queries";
 import { GetPage } from "@/entities/page/model/queries";
 import { GetProjectsWithLimit } from "@/entities/project/model/queries";
 
 import TechStack from "@/features/Project/ui/TechStack.astro";
 import Main from "@/features/Project/ui/Main.astro";
 
-import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
+import Intro from "@/widgets/Intro.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
 
 const page = await GetPage({ name: "project" });
-const portofolios = await GetProjectsWithLimit({ limit: 4 });
+const contacts = await GetContacts();
+const projects = await GetProjectsWithLimit({ limit: 4 });
 
-const hero = page.content[0];
+const hero = page.content[0] as BlockContent;
+const stack = page.content[1] as BlockContent;
+const main = page.content[2] as BlockContent;
 ---
 
 <MainLayout
   title={page.title}
   keyword={page.keyword}
   description={page.description}
+  contacts={contacts}
 >
-  <Intro {...hero} />
-  <TechStack />
-  <Main data={portofolios} />
-  <ClickToAction />
+  <Intro data={hero} />
+  <TechStack data={stack} />
+  <Main data={main} projects={projects} />
+  <ClickToAction data={page.content[3]} />
 </MainLayout>

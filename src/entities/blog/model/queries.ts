@@ -8,7 +8,7 @@ export const GetBlogsWithLimit = ({
   limit: number;
 }): Promise<BaseBlog[]> => {
   return sanityClient.fetch(
-    '*[_type == "post"] | order(_createdAt desc) [0...$limit]{ slug, coverImage, title, description, _createdAt }',
+    '*[_type == "post"] | order(_createdAt desc) [0...$limit]{ title, description, slug, coverImage, tag }',
     { limit },
   );
 };

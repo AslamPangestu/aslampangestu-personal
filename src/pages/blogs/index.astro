@@ -1,30 +1,34 @@
 ---
-import { sanityClient } from "sanity:client";
-
+import type { BlockContent } from "@/entities/blockContent/model/type";
 import { GetBlogsWithLimit } from "@/entities/blog/model/queries";
+import { GetContacts } from "@/entities/contact/model/queries";
+import { GetPage } from "@/entities/page/model/queries";
 
 import Highlight from "@/features/Blog/ui/Highlight.astro";
 import Main from "@/features/Blog/ui/Main.astro";
 
-import Intro from "@/widgets/Intro.astro";
 import MainLayout from "@/widgets/MainLayout/index.astro";
+import Intro from "@/widgets/Intro.astro";
 import ClickToAction from "@/widgets/ClickToAction.astro";
 
-const page = await sanityClient.fetch(
-  '*[_type == "page" && name == "blog"][0]{..., content[]->{...}}',
-);
-const latestBlogs = await GetBlogsWithLimit({ limit: 2 });
+const page = await GetPage({ name: "blog" });
+const contacts = await GetContacts();
 const blogs = await GetBlogsWithLimit({ limit: 6 });
-const hero = page.content[0];
+
+const hero = page.content[0] as BlockContent;
+const highlight = page.content[1] as BlockContent;
+const main = page.content[2] as BlockContent;
 ---
 
 <MainLayout
   title={page.title}
   keyword={page.keyword}
   description={page.description}
+  contacts={contacts}
 >
-  <Intro {...hero} />
-  <Highlight data={latestBlogs} />
-  <Main data={blogs} />
-  <ClickToAction />
+  <Intro data={hero} />
+  <!-- TODO: Top Blog -->
+  <Highlight data={highlight} latestBlogs={blogs.slice(0, 2)} />
+  <Main data={main} blogs={blogs} />
+  <ClickToAction data={page.content[3]} />
 </MainLayout>

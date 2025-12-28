@@ -8,10 +8,16 @@ import type {
 
 type ContentItem = PortableTextBlock | ImageBlock;
 
+export interface PostTag extends BaseModel {
+  _type: "postTag";
+  title: string;
+}
+
 export interface BaseBlog extends BaseModel {
   _type: "post";
   title: string;
   description: string;
+  tags?: PostTag[];
   slug: {
     _type: "slug";
     current: string;
@@ -23,6 +29,6 @@ export interface Blog extends BaseBlog {
   // SEO fields
   keyword: string;
   // Post-specific fields
-  tags?: string[];
   content?: ContentItem[];
+  related?: BaseBlog[];
 }

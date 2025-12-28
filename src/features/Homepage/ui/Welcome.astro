@@ -1,11 +1,22 @@
 ---
-import type { BlockContent } from "@/entities/page/model/type";
+import { Icon } from "astro-icon/components";
+
+import type { BlockContent } from "@/entities/blockContent/model/type";
+import type { Skill } from "@/entities/skill/model/type";
 
 import Button from "@/shared/ui/Button/index.astro";
 
-type Props = BlockContent;
+interface Props {
+  data: BlockContent;
+  skills: Skill[];
+}
 
-const { title, subtitle } = Astro.props;
+const { data, skills } = Astro.props;
+
+const title = data.content?.[0].value;
+const subtitle = data.content?.[1].value;
+const subtitle2 = data.content?.[2].value;
+const action = data.content?.[3].value || "";
 ---
 
 <section class="flex h-screen flex-col justify-between">
@@ -23,9 +34,39 @@ const { title, subtitle } = Astro.props;
         >
           {subtitle}
         </h1>
+        <!-- TODO: Decorative Icon -->
+        <h1
+          class="text-on-surface dark:text-surface text-2xl font-black uppercase md:text-7xl"
+        >
+          {subtitle2}
+        </h1>
       </div>
-      <Button label="Lets Talk With Me" rounded color="primary" icon="A" />
+      <!-- TODO: Arrow Icon -->
+      <Button label={action} rounded color="primary" icon="A" />
     </div>
   </div>
-  <div class="bg-primary w-full">Marquee</div>
+  <div class="bg-primary w-full py-8">
+    <div class="overflow-hidden whitespace-nowrap">
+      <div
+        class="flex w-max animate-[var(--animation-marquee)] hover:[animation-play-state:paused]"
+      >
+        {
+          skills.map((skill) => (
+            <div class="mx-6 flex flex-row items-center gap-5">
+              <Icon name={skill.icon.name} class="text-4xl text-white" />
+              <span class="text-2xl font-bold text-white">{skill.name}</span>
+            </div>
+          ))
+        }
+        {
+          skills.map((skill) => (
+            <div class="mx-6 flex flex-row items-center gap-5">
+              <Icon name={skill.icon.name} class="text-4xl text-white" />
+              <span class="text-2xl font-bold text-white">{skill.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </section>

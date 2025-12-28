@@ -12,7 +12,7 @@ import netlify from "@astrojs/netlify";
 const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
   process.env.NODE_ENV ?? "",
   process.cwd(),
-  "",
+  "PUBLIC_",
 );
 
 // https://astro.build/config

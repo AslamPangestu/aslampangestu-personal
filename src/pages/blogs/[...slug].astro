@@ -25,6 +25,7 @@ const cta = await GetCallToAction({ name: "global" });
 const post = await GetBlogBySlug({ slug });
 
 const imageUrl = post.coverImage ? getImageUrl(post.coverImage).url() : "";
+const tags = post.tags || [];
 // const relatedBlog = post.related || [];
 ---
 
@@ -56,9 +57,20 @@ const imageUrl = post.coverImage ? getImageUrl(post.coverImage).url() : "";
             format(parseISO(post._createdAt), "dd MMMM yyyy, HH:mm")
           }</span
         >
-        <span class="text-on-surface-secondary text-sm dark:text-white"
-          >Tags</span
-        >
+        <div class="flex flex-row items-center gap-2">
+          <span class="text-on-surface-secondary text-sm dark:text-white"
+            >Tags:
+          </span>
+          {
+            tags.map((item) => (
+              <div>
+                <span class="bg-outline text-inverse-surface rounded px-2 text-sm">
+                  {item.title}
+                </span>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
     {

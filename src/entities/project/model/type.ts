@@ -17,8 +17,4 @@ export interface Project extends BaseModel {
   skill?: Skill[];
   projectDescription?: string;
   site?: string;
-  slug?: {
-    _type: "slug";
-    current: string;
-  };
 }

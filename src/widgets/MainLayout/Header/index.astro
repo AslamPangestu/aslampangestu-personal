@@ -6,7 +6,7 @@ import { ROUTES } from "@/shared/config/route";
 import ToggleDarkMode from "./ToggleDarkMode.svelte";
 import Menu from "./Menu.svelte";
 
-const currentPath = Astro.url.pathname;
+const currentPath = new URL(Astro.request.url).pathname.split("/")[1];
 ---
 
 <!-- TODO: Handle Mobile Menu -->
@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
       <ul class="flex flex-row justify-center gap-20">
         {
           ROUTES.map((route) => {
-            const selected = currentPath === route.href;
+            const selected = `/${currentPath}` === route.href;
             return (
               <li class="flex items-center justify-center">
                 {selected ? (
@@ -62,7 +62,7 @@ const currentPath = Astro.url.pathname;
       header.classList.add(
         "bg-surface/10",
         "backdrop-blur-md",
-        "dark:bg-surface-900/50",
+        "dark:bg-surface-900/50"
       );
       header.classList.remove("bg-transparent", "backdrop-blur-0");
     } else {
@@ -70,7 +70,7 @@ const currentPath = Astro.url.pathname;
       header.classList.remove(
         "bg-surface/10",
         "backdrop-blur-md",
-        "dark:bg-surface-900/50",
+        "dark:bg-surface-900/50"
       );
     }
   });
@@ -80,7 +80,7 @@ const currentPath = Astro.url.pathname;
       header.classList.add(
         "bg-surface/10",
         "backdrop-blur-md",
-        "dark:bg-surface-900/50",
+        "dark:bg-surface-900/50"
       );
       header.classList.remove("bg-transparent", "backdrop-blur-0");
     } else {
@@ -88,7 +88,7 @@ const currentPath = Astro.url.pathname;
       header.classList.remove(
         "bg-surface/10",
         "backdrop-blur-md",
-        "dark:bg-surface-900/50",
+        "dark:bg-surface-900/50"
       );
     }
   });

@@ -4,6 +4,8 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
+
 import sanity from "@sanity/astro";
 import icon from "astro-icon";
 
@@ -38,6 +40,7 @@ export default defineConfig({
       studioBasePath: "/dashboard",
     }),
     react(),
+    svelte(),
     icon(),
   ],
 });

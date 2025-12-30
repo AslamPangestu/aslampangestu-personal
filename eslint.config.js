@@ -3,6 +3,7 @@ import globals from "globals";
 import js from "@eslint/js";
 import prettier from "eslint-config-prettier";
 import pluginAstro from "eslint-plugin-astro";
+import pluginSvelte from "eslint-plugin-svelte";
 import pluginPrettier from "eslint-plugin-prettier";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
@@ -43,6 +44,23 @@ export default defineConfig([
     },
   },
   ...pluginAstro.configs.recommended,
+  // Svelte files
+  {
+    files: ["**/*.svelte"],
+    languageOptions: {
+      parser: pluginSvelte.parser,
+      parserOptions: {
+        parser: tsParser,
+      },
+    },
+    plugins: {
+      pluginSvelte,
+      "@typescript-eslint": tseslint,
+    },
+    rules: {
+      ...pluginSvelte.configs.recommended.rules,
+    },
+  },
   {
     rules: {
       // override/add rules settings here, such as:

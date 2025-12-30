@@ -2,7 +2,7 @@ import { sanityClient } from "sanity:client";
 
 import type { BaseBlog } from "./type";
 
-// TODO: Blog Pagination and support filtering
+// TODO: Phase 2 -Blog Pagination and support filtering
 export const GetBlogsWithLimit = ({
   limit,
 }: {

@@ -92,7 +92,7 @@
         </div>
         <button
           onclick={closeMenu}
-          class="text-white flex h-6 w-6"
+          class="text-white flex h-6 w-6 cursor-pointer"
           aria-label="Close Menu"
         >
           <Icon icon="lucide:circle-x" class="w-full h-full" />
@@ -102,9 +102,7 @@
       <!-- Menu List -->
       <nav class="flex flex-col items-center px-4 pb-8 pt-6">
         {#each routes as route (route.key)}
-          {@const selected =
-            currentPath === route.href ||
-            (route.href !== "/" && currentPath.startsWith(route.href))}
+          {@const selected = `/${currentPath}` === route.href}
           <a
             href={route.href}
             class="px-6 py-5 text-3xl font-semibold {selected

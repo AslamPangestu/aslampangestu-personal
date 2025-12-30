@@ -52,7 +52,7 @@
   bind:this={dialogElement}
   onclose={handleClose}
   onclick={handleDialogClick}
-  class="fixed inset-0 z-50 m-auto rounded-4xl max-w-4xl max-h-[90vh] backdrop:bg-black/40 backdrop:backdrop-blur-sm focus:outline-none"
+  class="fixed inset-0 z-50 max-h-none h-screen lg:m-auto lg:rounded-4xl max-w-4xl lg:max-h-[90vh] backdrop:bg-black/40 backdrop:backdrop-blur-sm focus:outline-none"
 >
   {#if isOpen && project}
     <div
@@ -65,7 +65,7 @@
           <img
             src={imageUrl}
             alt={project.title}
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
           />
         {/if}
         <button

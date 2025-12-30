@@ -15,7 +15,10 @@
   const imageUrl = $derived(coverImage ? getImageUrl(coverImage).url() : "");
 </script>
 
-<div class="group relative block aspect-[4/3] overflow-hidden rounded-4xl">
+<!-- TODO: Phase 2 - Enhance Accesibility -->
+<div
+  class="group relative block aspect-[4/3] overflow-hidden rounded-4xl dark:border-[0.5px] dark:border-surface"
+>
   {#if imageUrl}
     <img
       src={imageUrl}
@@ -34,8 +37,10 @@
         type="button"
         onclick={onClick}
       >
-        <span class="text-xl font-semibold text-white">View Detail</span>
-        <Icon icon="lucide:arrow-right" class="text-2xl" />
+        <span class="text-sm md:text-xl font-semibold text-white"
+          >View Detail</span
+        >
+        <Icon icon="lucide:arrow-right" class="text-lg md:text-2xl" />
       </button>
     </div>
 

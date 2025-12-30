@@ -1,14 +1,14 @@
-/* TODO: Animated to make full bg color from left to right */
+/* TODO: Phase 2 -Animated to make full bg color from left to right */
 .button-container {
-    @apply cursor-pointer flex flex-row max-w-fit transition-all duration-200 ease-in-out rounded-lg overflow-hidden;
+    @apply cursor-pointer text-sm md:text-base font-semibold flex flex-row max-w-fit transition-all duration-200 ease-in-out rounded-lg overflow-hidden;
 }
 
 .button-container>div:first-child {
-    @apply h-12 px-8 content-center;
+    @apply h-10 md:h-12 px-8 content-center;
 }
 
 .button-container>div:last-child {
-    @apply h-12 w-12 content-center justify-items-center;
+    @apply h-10 md:h-12 w-10 md:w-12 content-center justify-items-center;
 }
 
 /* Color */

@@ -26,7 +26,7 @@ const content = data.content?.[0];
   <div
     class="order-1 flex flex-col items-start md:order-3 md:col-span-2 md:items-center lg:col-span-2"
   >
-    <div class="flex flex-col items-start text-center md:items-center">
+    <div class="flex flex-col items-start md:items-center md:text-center">
       <div class="mb-6">
         <Image src="/images/logo.svg" alt="Logo" width={116} height={72} />
       </div>
@@ -50,7 +50,7 @@ const content = data.content?.[0];
       class="text-on-surface-secondary dark:text-surface mb-8 text-sm md:text-lg"
       >{cta?.description}</span
     >
-    <!-- TODO: On Click -->
+    <!-- TODO: Phase 2 - Rotate Arrow & On Click -->
     <Button
       label={cta?.ctaText}
       rounded

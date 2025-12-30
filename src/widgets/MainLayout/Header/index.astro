@@ -4,8 +4,9 @@ import { Image } from "astro:assets";
 import { ROUTES } from "@/shared/config/route";
 
 import ToggleDarkMode from "./ToggleDarkMode.svelte";
+import Menu from "./Menu.svelte";
 
-const currentPath = new URL(Astro.request.url).pathname.split("/")[1];
+const currentPath = Astro.url.pathname;
 ---
 
 <!-- TODO: Handle Mobile Menu -->
@@ -24,7 +25,7 @@ const currentPath = new URL(Astro.request.url).pathname.split("/")[1];
       <ul class="flex flex-row justify-center gap-20">
         {
           ROUTES.map((route) => {
-            const selected = `/${currentPath}` === route.href;
+            const selected = currentPath === route.href;
             return (
               <li class="flex items-center justify-center">
                 {selected ? (
@@ -46,10 +47,10 @@ const currentPath = new URL(Astro.request.url).pathname.split("/")[1];
       </ul>
     </nav>
     <div class="flex basis-1/2 flex-row justify-end lg:hidden">
-      <span>Menu</span>
+      <Menu routes={ROUTES} currentPath={currentPath} client:load />
     </div>
     <div class="hidden lg:flex lg:basis-1/4 lg:justify-end">
-      <ToggleDarkMode client:only="svelte" />
+      <ToggleDarkMode client:only="svelte" color="primary" />
     </div>
   </div>
 </header>

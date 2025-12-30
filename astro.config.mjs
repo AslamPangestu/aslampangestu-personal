@@ -2,6 +2,7 @@
 import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import { imagetools } from "vite-imagetools";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
@@ -23,7 +24,7 @@ export default defineConfig({
   output: "server",
   adapter: netlify(),
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), imagetools()],
   },
   image: {
     domains: ["media.licdn.com", "cdn.sanity.io"],

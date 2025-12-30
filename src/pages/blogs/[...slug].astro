@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { format, parseISO } from "date-fns";
 
-import BlogItem from "@/entities/blog/ui/BlogItem.astro";
+// import BlogItem from "@/entities/blog/ui/BlogItem.astro";
 import { GetContacts } from "@/entities/contact/model/queries";
 import { GetCallToAction } from "@/entities/callToAction/model/queries";
 
@@ -25,7 +25,7 @@ const cta = await GetCallToAction({ name: "global" });
 const post = await GetBlogBySlug({ slug });
 
 const imageUrl = post.coverImage ? getImageUrl(post.coverImage).url() : "";
-const relatedBlog = post.related || [];
+// const relatedBlog = post.related || [];
 ---
 
 <MainLayout
@@ -72,17 +72,21 @@ const relatedBlog = post.related || [];
       )
     }
   </section>
-  <section
+  <!-- TODO: Phase 2 - Implement related blog -->
+  <!-- <section
     class="container mx-auto mt-12 mb-12 grid w-full grid-cols-1 px-6 md:grid-cols-3 md:px-8"
+  > -->
+  <section
+    class="container mx-auto mt-12 mb-12 grid w-full grid-cols-1 px-6 md:px-8"
   >
     <div
       class="dark:text-surface text-on-surface-secondary col-span-2 row-span-2"
     >
       <PortableText value={post.content} />
     </div>
-    <div class="flex flex-col gap-6">
+    <!-- <div class="flex flex-col gap-6">
       {relatedBlog.map((blog) => <BlogItem {...blog} />)}
-    </div>
+    </div> -->
   </section>
   <ClickToAction data={cta} />
 </MainLayout>

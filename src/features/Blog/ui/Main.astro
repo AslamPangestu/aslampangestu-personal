@@ -29,18 +29,18 @@ const description = data.content?.[1].value;
       {description}
     </p>
   </div>
-  <!-- TODO: Implement Filter -->
-  <div class="flex w-full flex-row gap-5">
+  <!-- TODO: Phase 2 - Implement Filter -->
+  <!-- <div class="flex w-full flex-row gap-5">
     <span>Filter 1</span>
     <span>Filter 2</span>
-  </div>
+  </div> -->
   <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
     {blogs.map((item) => <BlogItem {...item} />)}
   </div>
-  <!-- TODO: Implement Pagination -->
-  <div class="flex flex-row justify-around">
+  <!-- TODO: Phase 2 - Implement Pagination -->
+  <!-- <div class="flex flex-row justify-around">
     <div>Next</div>
     <div>Pages</div>
     <div>Next</div>
-  </div>
+  </div> -->
 </section>

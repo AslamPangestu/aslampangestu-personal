@@ -27,11 +27,11 @@ const collections = data.collection as BaseBlog[];
   description={description}
   action={{ label: action, href: "/blogs" }}
 >
-  <!-- TODO: Implement filter -->
-  <div class="flex w-full flex-row gap-5">
+  <!-- TODO: Phase 2 - Implement filter -->
+  <!-- <div class="flex w-full flex-row gap-5">
     <span>Filter 1</span>
     <span>Filter 2</span>
-  </div>
+  </div> -->
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-[1fr_450px]">
     {
       collections.map((item, index) => (

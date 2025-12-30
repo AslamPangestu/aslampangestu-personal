@@ -25,11 +25,11 @@ const collections = data.collection as Project[];
   description={description}
   action={{ label: action, href: "/projects" }}
 >
-  <!-- TODO: Implement filter -->
-  <div class="flex w-full flex-row gap-5">
+  <!-- TODO: Phase 2 - Implement filter -->
+  <!-- <div class="flex w-full flex-row gap-5">
     <span>Filter 1</span>
     <span>Filter 2</span>
-  </div>
+  </div> -->
   <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2">
     {collections.map((item) => <ProjectItem {...item} />)}
   </div>

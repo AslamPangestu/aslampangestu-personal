@@ -40,10 +40,12 @@ const tags = post.tags || [];
   >
     <a
       href="/blogs"
-      class="text-on-surface-secondary flex w-min flex-row items-center gap-2 hover:underline dark:text-white"
+      class="text-on-surface-secondary dark:text-surface flex w-min flex-row items-center gap-2 hover:underline"
     >
-      <Icon name="lucide:arrow-left" class="h-6 w-6" />
-      <span class="whitespace-nowrap">Back to Blog</span>
+      <Icon name="lucide:arrow-left" class="text-lg md:text-2xl" />
+      <span class="text-base font-medium whitespace-nowrap md:text-xl"
+        >Back to Blog</span
+      >
     </a>
     <div class="flex flex-col gap-2">
       <h1

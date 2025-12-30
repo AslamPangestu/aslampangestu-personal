@@ -17,10 +17,11 @@ const { data, contacts } = Astro.props;
 const title = data.content?.[0].value;
 const subtitle = data.content?.[1].value;
 const description = data.content?.[2].value;
+const profile = data.content?.[3].value;
 ---
 
 <section
-  class="container mx-auto flex h-screen max-h-[1000px] w-full flex-col items-start gap-8 px-6 md:flex-row md:items-center md:px-8"
+  class="container mx-auto my-24 flex h-screen max-h-[1000px] min-h-[620px] w-full flex-col items-start gap-20 px-6 md:flex-row md:items-center md:px-8"
 >
   <div class="order-2 flex flex-col justify-between md:order-1 md:basis-1/2">
     <div class="flex flex-col gap-5">
@@ -55,6 +56,26 @@ const description = data.content?.[2].value;
       </div>
     </div>
   </div>
-  <!-- TODO: Implement Image -->
-  <div class="order-1 md:order-2 md:basis-1/2">Image</div>
+  <div
+    class="order-1 flex h-full w-full flex-col items-center md:order-2 md:h-3/4 md:basis-1/2"
+  >
+    <div class="relative h-full w-[200px] md:w-full">
+      <div class="bg-primary absolute inset-x-0 top-0 h-[55%] rounded-[32px]">
+      </div>
+      <div
+        class="bg-surface absolute inset-x-0 top-6 bottom-0 mx-auto w-[92%] overflow-hidden rounded-4xl p-2"
+      >
+        {
+          profile && (
+            <Image
+              src={profile}
+              alt="profile"
+              inferSize
+              class="h-full rounded-4xl object-cover"
+            />
+          )
+        }
+      </div>
+    </div>
+  </div>
 </section>

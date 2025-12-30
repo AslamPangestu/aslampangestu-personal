@@ -37,7 +37,7 @@ export default defineConfig({
     sanity({
       projectId: PUBLIC_SANITY_PROJECT_ID,
       dataset: PUBLIC_SANITY_DATASET,
-      useCdn: false,
+      useCdn: true,
       studioBasePath: "/dashboard",
     }),
     react(),

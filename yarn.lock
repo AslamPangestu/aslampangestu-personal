@@ -2640,12 +2640,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/lucide@npm:^1.2.82":
-  version: 1.2.82
-  resolution: "@iconify-json/lucide@npm:1.2.82"
+"@iconify-json/tabler@npm:^1.2.25":
+  version: 1.2.25
+  resolution: "@iconify-json/tabler@npm:1.2.25"
   dependencies:
     "@iconify/types": "npm:*"
-  checksum: 10c0/81a38d3faca74c3c92be7257021934c69ba151eb91ea65ef4b507c923c2c3a4347ae605f5f119e8d0810692c856600422c50c3f1d28a853d8dc7a22fb567764b
+  checksum: 10c0/fe539917492426a6500bf9de60d711b3f147578d1d6e9023dd2f981bebf4fd68afa5b7ff9070fc30abc6d2dcb03146a1870f410a086106b8c1a9dac4c04d0994
   languageName: node
   linkType: hard
 
@@ -7249,7 +7249,7 @@ __metadata:
     "@eslint/js": "npm:^9.36.0"
     "@fontsource-variable/geist": "npm:^5.2.8"
     "@iconify-json/devicon-plain": "npm:^1.2.50"
-    "@iconify-json/lucide": "npm:^1.2.82"
+    "@iconify-json/tabler": "npm:^1.2.25"
     "@iconify/react": "npm:^6.0.2"
     "@iconify/svelte": "npm:^5.1.0"
     "@portabletext/sanity-bridge": "npm:^1.1.10"

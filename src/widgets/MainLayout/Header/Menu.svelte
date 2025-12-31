@@ -64,10 +64,9 @@
   onclick={toggleMenu}
   aria-label="Toggle Menu"
 >
-  <span class="bg-primary dark:bg-surface h-0.5 w-4"></span>
-  <span class="bg-primary dark:bg-surface h-0.5 w-6 transition-all duration-300"
-  ></span>
-  <span class="bg-primary dark:bg-surface h-0.5 w-4"></span>
+  <span class="bg-primary h-0.5 w-4"></span>
+  <span class="bg-primary h-0.5 w-6 transition-all duration-300"></span>
+  <span class="bg-primary h-0.5 w-4"></span>
 </button>
 
 <dialog

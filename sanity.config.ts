@@ -16,7 +16,7 @@ export default defineConfig({
     structureTool(),
     unsplashImageAsset(),
     iconify({
-      collections: ["devicon-plain", "lucide"],
+      collections: ["devicon-plain", "tabler"],
       showName: true,
     }),
   ],

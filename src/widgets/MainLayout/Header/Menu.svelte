@@ -95,7 +95,7 @@
           class="text-white flex h-6 w-6 cursor-pointer"
           aria-label="Close Menu"
         >
-          <Icon icon="lucide:circle-x" class="w-full h-full" />
+          <Icon icon="tabler:circle-x" class="w-full h-full" />
         </button>
       </header>
 

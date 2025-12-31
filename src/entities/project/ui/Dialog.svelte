@@ -73,7 +73,7 @@
           class="absolute cursor-pointer right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-black/70"
           aria-label="Close Dialog"
         >
-          <Icon icon="lucide:x" class="text-2xl" />
+          <Icon icon="tabler:x" class="text-2xl" />
         </button>
       </div>
 

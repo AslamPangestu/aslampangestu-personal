@@ -40,7 +40,7 @@
         <span class="text-sm md:text-xl font-semibold text-white"
           >View Detail</span
         >
-        <Icon icon="lucide:arrow-right" class="text-lg md:text-2xl" />
+        <Icon icon="tabler:arrow-right" class="text-lg md:text-2xl" />
       </button>
     </div>
 

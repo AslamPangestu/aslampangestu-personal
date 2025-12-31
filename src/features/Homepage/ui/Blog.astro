@@ -18,7 +18,7 @@ const subtitle = data.content?.[1].value || "";
 const description = data.content?.[2].value || "";
 const action = data.content?.[3].value || "";
 
-const collections = data.collection as BaseBlog[];
+const collections = (data.collection || []) as BaseBlog[];
 ---
 
 <Container

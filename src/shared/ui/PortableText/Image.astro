@@ -1,7 +1,7 @@
 ---
 import { getImageUrl } from "@/shared/lib/sanity-image-url";
 
-const { asset, alt } = Astro.props.node;
+const { asset, alt, caption } = Astro.props.node;
 
 const baseImage = getImageUrl(asset);
 
@@ -9,7 +9,16 @@ const url = baseImage.url();
 const webpUrl = baseImage.format("webp").url();
 ---
 
-<picture>
-  <source srcset={webpUrl} type="image/webp" />
-  <img class="responsive__img" src={url} alt={alt} />
-</picture>
+<figure class="my-8">
+  <picture>
+    <source srcset={webpUrl} type="image/webp" />
+    <img class="responsive__img rounded-lg shadow-md" src={url} alt={alt} />
+  </picture>
+  {
+    caption && (
+      <figcaption class="mt-2 text-center text-sm text-gray-500 italic">
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>

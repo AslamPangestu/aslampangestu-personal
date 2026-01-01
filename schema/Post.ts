@@ -69,8 +69,8 @@ export default defineType({
             decorators: [
               { title: "Strong", value: "strong" },
               { title: "Emphasis", value: "em" },
-              { title: "Code", value: "code" },
               { title: "Underline", value: "underline" },
+              { title: "Code", value: "code" },
               { title: "Strike", value: "strike-through" },
             ],
             annotations: [
@@ -83,6 +83,10 @@ export default defineType({
                     title: "URL",
                     name: "href",
                     type: "url",
+                    validation: (Rule) =>
+                      Rule.uri({
+                        scheme: ["http", "https", "mailto", "tel"],
+                      }),
                   },
                   {
                     title: "Open in new tab",

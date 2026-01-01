@@ -1,0 +1,13 @@
+---
+const { node } = Astro.props;
+const { href, blank } = node.markDef;
+---
+
+<a
+  href={href}
+  target={blank ? "_blank" : undefined}
+  rel={blank ? "noopener noreferrer" : undefined}
+  class="text-blue-500 underline underline-offset-4 transition-colors hover:text-blue-600"
+>
+  <slot />
+</a>

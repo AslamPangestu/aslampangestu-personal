@@ -1,0 +1,1 @@
+<h6 class="text-base"><slot /></h6>

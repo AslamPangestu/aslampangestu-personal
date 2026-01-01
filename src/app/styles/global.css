@@ -30,25 +30,19 @@ body {
 @layer components {
   @import "./button.component.css";
 
-  /* PortableText List Nesting */
-  ul {
-    list-style-type: disc;
-    & ul {
-      list-style-type: circle;
-      & ul {
-        list-style-type: square;
-      }
-    }
+  /* PortableText List Nesting Fix */
+  ul ul {
+    @apply !list-[circle];
+  }
+  ul ul ul {
+    @apply !list-[square];
   }
 
-  ol {
-    list-style-type: decimal;
-    & ol {
-      list-style-type: lower-alpha;
-      & ol {
-        list-style-type: lower-roman;
-      }
-    }
+  ol ol {
+    @apply !list-[lower-alpha];
+  }
+  ol ol ol {
+    @apply !list-[lower-roman];
   }
 }
 
